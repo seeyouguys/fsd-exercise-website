@@ -1,81 +1,27 @@
 @import "utils/libs";
 @import "utils/vars";
-@import "utils/mixins";
+// @import "utils/mixins";
 @import "utils/fonts";
 
-html {
-  line-height: $mainLineHeight;
-	font-size: $mainFontSize;
-	color: $mainFontColor;
-  height: 100%;
-  @media screen and (max-width: $desktopWidth) {
-		font-size: 16px;
-  }
-  @media screen and (max-width: $tableWidth) {
-		font-size: 15px;
-  }
-  @media screen and (max-width: $phoneWidth) {
-		font-size: 14px;
-  }
-}
-
 body {
-  font-family: $mainFont;
-	font-size: $mainFontSize;
-  font-weight: $mainFontWeight;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font: 14px/24px $font-content;
+  color: rgba($color-shade, .75);
+
+  background-color: $color-bg;
 }
 
-section, .section {
-  position: relative;
-  padding: 40px 0;
-  @media screen and (max-width: $desktopWidth) {
-    padding: 36px 0;
-  }
-  @media screen and (max-width: $desktopWidth) {
-    padding: 28px 0;
-  }
-  @media screen and (max-width: $desktopWidth) {
-    padding: 20px 0;
-  }
+// font: font-weight font-size/line-height font-family;
+h1 {
+  font: bold 24px/30px $font-title;
+  color: $color-shade;
+}
+h2 {
+  font: bold 19px/24px $font-title;
+  color: $color-shade;
+}
+h3 {
+  font: bold 12px/15px $font-content;
+  color: $color-shade;
+  text-transform: uppercase;
 }
 
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  min-height: 100vh;
-}
-
-.content-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  align-items: center;
-}
-
-.container {
-  width: 100%;
-  flex: 0 0 auto;
-  position: relative;
-  margin: 0 auto;
-  max-width: $desktopWidth;
-  @media screen and (max-width: $smDesktopWidth) {
-    max-width: tableWidth;
-  }
-  @media screen and (max-width: $tableWidth) {
-    max-width: phoneWidth;
-  }
-  @media screen and (max-width: $phoneWidth) {
-    max-width: smPhoneWidth;
-  }
-}
-
-
-img {
-  width: 300px;
-}
-
-// Modules
-// @import "modules/my-module.scss";
