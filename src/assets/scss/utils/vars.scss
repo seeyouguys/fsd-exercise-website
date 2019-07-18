@@ -1,5 +1,5 @@
 // Fonts
-$font-title              : 'Quicksand', sans-serif;
+$font-title              : 'Quicksand', 'Open Sans' sans-serif;
 $font-content            : 'Montserrat', sans-serif; 
 
 // Size
@@ -15,3 +15,4 @@ $color-accent            : #6FCF97;
 // for different tones of the color use rgba($color-shade, .75/.50/.25/.05)
 $color-shade             : #1F2041;
 $color-bg                : #FFFFFF;
+$color-gradient          : linear-gradient(180deg, $color-primary 0%, #8BA4F9 100%);
