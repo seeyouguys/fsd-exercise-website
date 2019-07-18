@@ -1,0 +1,19 @@
+//- navigation menu
+    menu_link is a default class that applies general styles, 
+    ${className}__link allows to mix in some block-specific styles (i.e. header-nav__link)
+mixin menu(items, className='')
+    ul(class=`menu ${className}`)
+        each item in items
+            - var itemClass = `menu__link ${className}__link`
+            if item.active
+                - itemClass+= ` menu__link_active ${className}__link_active`
+            
+            li: a(href=item.href class=itemClass )= item.title
+
+//- button-stylized link
+mixin link-btn(title, href, className='')
+    if className.includes('btn_ghost')
+        .btn-ghost-wrap
+            a(href=href, class=`btn ${className}`)= title
+    else
+        a(href=href, class=`btn ${className}`)= title
