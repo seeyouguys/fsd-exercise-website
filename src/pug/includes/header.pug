@@ -1,2 +1,25 @@
+-
+    var menuItems = [
+        { title: 'home', href: '#', active: true },
+        { title: 'about us', href: '#' },
+        { title: 'services', href: '#' },
+        { title: 'careers', href: '#' },
+        { title: 'news', href: '#' },
+        { title: 'documentation', href: '#' }
+    ]
+
 header.header
-    h1 This is header
+    .header-wrap
+        .header__section.header__logo.
+            TOXIN
+        
+        .header__section.header__nav
+            +menu(menuItems, 'header-nav')
+        
+        .header__section.header__profile
+            if !userName
+                +link-btn('login', '#', 'btn_ghost')
+                +link-btn('register', '#')
+            else
+                span.username #{userName}
+            

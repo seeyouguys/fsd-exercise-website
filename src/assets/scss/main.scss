@@ -4,13 +4,11 @@
 @import "utils/fonts";
 
 body {
-  font: 14px/24px $font-content;
   color: rgba($color-shade, .75);
-
-  background-color: $color-bg;
+  box-sizing: border-box;
+  background-color: #F4F4F6;
 }
 
-// font: font-weight font-size/line-height font-family;
 h1 {
   font: bold 24px/30px $font-title;
   color: $color-shade;
@@ -25,3 +23,7 @@ h3 {
   text-transform: uppercase;
 }
 
+// Modules
+@import 'modules/header.scss';
+@import 'modules/menu.scss';
+@import 'modules/btn.scss';
