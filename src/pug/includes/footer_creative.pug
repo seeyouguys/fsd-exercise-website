@@ -1,12 +1,9 @@
 footer.footer.footer_creative
-    .footer-wrap
+    .footer-wrap.footer-wrap_creative
         .footer__section.footer__logo
             | TOXIN
 
         .footer__section.footer__text
             | Lorem ipsum dolor sit amet consectetur adipiscing elit aliquam eget nullam pellentesque aliquam curabitur cociis.
         .footer__section.footer__contact-links
-            //- font awesome icons
-            a(href='#' class='footer__icon fab fa-twitter')
-            a(href='#' class='footer__icon fab fa-facebook-square')
-            a(href='#' class='footer__icon fab fa-instagram')
+            +contact-links('footer__icon')
