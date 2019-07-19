@@ -1,0 +1,54 @@
+// temp
+.footer {
+    margin-top: 150px;
+    margin-bottom: 130px;
+
+    &__logo {
+        font: bold 13px/40px $font-title;
+        color: $color-shade;
+        height: 40px;
+    }
+
+}
+
+// real shit
+.footer {
+    background-color: $color-bg;
+    box-shadow: 0px 10px 20px rgba($color-shade, .05);
+    font: 14px/24px $font-content;
+    &_creative {
+        height: 367px;
+    }
+}
+
+.footer__text {
+    max-width: 560px;
+}
+.footer__contact-links {
+    margin-top: 25px;
+    font-size: 24px;
+    line-height: 23px;
+}
+.footer__icon {
+    background: $color-gradient;
+    background-clip: text;
+    margin: 0 10px;
+    text-decoration: none;
+    color: transparent;
+}
+
+
+.footer-wrap {
+    width: 100%;
+    height: 100%;
+    max-width: 1160px;
+    margin: 0 auto;
+
+
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
