@@ -1,7 +1,7 @@
 footer.footer
     .footer-wrap
         .footer__section.footer__info
-            img(src="/assets/img/toxin-logo.svg", alt="Toxin logo")
+            img.footer__logo(src="/assets/img/toxin-logo.svg", alt="Toxin logo")
             | Lorem ipsum dolor sit amet consectetur adipiscing elit aliquam eget nullam pellentesque aliquam curabitur cociis.
 
         .footer__section.footer__nav
@@ -43,6 +43,7 @@ footer.footer
             p Receive our latest news and promotions in your inbox!
 
             input#newsletter-email(type="email", name="subscribe")
-        .footer__copyright
-            p Copyright © 2018 Toxin UI Kit. All rights reserved.
-            +contact-links('footer__icon')
+    .footer__copyright
+        .footer-wrap.footer-wrap_copyright
+            span Copyright © 2018 Toxin UI Kit. All rights reserved.
+            .footer__contact-links: +contact-links('footer__icon')

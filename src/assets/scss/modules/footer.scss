@@ -1,14 +1,7 @@
-// temp
+// temp (just for demo layout)
 .footer {
     margin-top: 150px;
     margin-bottom: 130px;
-
-    &__logo {
-        font: bold 13px/40px $font-title;
-        color: $color-shade;
-        height: 40px;
-    }
-
 }
 
 // real shit
@@ -16,16 +9,40 @@
     background-color: $color-bg;
     box-shadow: 0px 10px 20px rgba($color-shade, .05);
     font: 14px/24px $font-content;
+}
+
+.footer-wrap {
+    width: 100%;
+    padding: 100px 0 110px;
+    max-width: 1160px;
+    margin: 0 auto;
+    
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+
     &_creative {
-        height: 367px;
+        flex-flow: column nowrap;
+        align-items: center;
+        text-align: center;
     }
+
+    &_copyright {
+        padding: 23px 0;
+        justify-content: space-between;
+    }
+}
+
+.footer__logo {
+    display: block;
+    margin-bottom: 20px;
 }
 
 .footer__text {
     max-width: 560px;
+    margin-bottom: 25px;
 }
 .footer__contact-links {
-    margin-top: 25px;
     font-size: 24px;
     line-height: 23px;
 }
@@ -37,18 +54,30 @@
     color: transparent;
 }
 
-
-.footer-wrap {
-    width: 100%;
-    height: 100%;
-    max-width: 1160px;
-    margin: 0 auto;
-
-
-
-    display: flex;
+.footer-nav {
     flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+
+    &__link {
+        display: block;
+        margin-top: 20px;
+    }
+}
+
+
+.footer {
+    &__info {
+        width: 260px;
+    }
+    &__subscribe {
+        width: 260px;
+    }
+    &__copyright {
+        &::before {
+            display: block;
+            content: '';
+            background-color: rgba($color-shade, .1);
+            height: 1px;
+            width: 100%;
+        }
+    }
 }
