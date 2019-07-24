@@ -1,0 +1,84 @@
+//
+// FIELDS
+//
+
+.field {
+    width: 320px;
+    height: 44px;
+    padding: 12px 15px 8px;
+    box-sizing: border-box;
+
+    background: $color-bg;
+    border: 1px solid rgba($color-shade, .25);
+    border-radius: 4px;
+    transition: border 100ms linear;
+
+    font: 14px/24px $font-content;
+    color: rgba($color-shade, .75);
+    
+
+    &:hover, &:focus {
+        outline: none; // rm default chrome style for input:focus
+        border-color: rgba($color-shade, .5);
+    }
+
+    &::placeholder {
+        color: rgba($color-shade, .25);
+    }
+}
+
+.subscribe {
+    position: relative;
+    &__arrow-btn {
+        width: 44px;
+        height: 44px;
+        
+        background-color: transparent;
+        padding: 0;
+        margin: 0;
+        outline: none;
+        border: none;
+        
+        @include text-color($color-gradient);
+        position: absolute;
+        left: calc(320px-44px);
+
+        &:hover {
+            opacity: .5;
+        }
+    }
+}
+
+//
+// CONTROLS
+//
+
+// link-btn
+// button-stylized link
+.btn {
+    background: $color-gradient;
+    color: $color-bg;
+
+    font: bold 12px/15px $font-content;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    padding: 10px 20px;
+    border-radius: 22px;
+
+    &_ghost {
+        display: inline-block;
+        padding: 8px 18px;
+        border: 2px solid transparent;
+        
+        color: $color-primary;
+        background: $color-bg;
+        background-clip: padding-box;
+    }
+}
+
+.btn-ghost-wrap {
+    display: inline-block;
+    background: $color-gradient;
+    border-radius: 22px;
+}

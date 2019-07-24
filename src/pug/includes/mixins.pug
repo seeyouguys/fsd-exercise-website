@@ -12,7 +12,44 @@ mixin menu(items, className='')
             
             li: a(href=item.href class=itemClass )= item.title
 
+
+//- font-awesome icon-stylized links. used in both footers
+mixin contact-links(className='')
+    a(href='#' class=`${className} fab fa-twitter`)
+    a(href='#' class=`${className} fab fa-facebook-square`)
+    a(href='#' class=`${className} fab fa-instagram`)
+
+
+//- FORM ELEMENTS
+
+
+//- text field
+    
+    av. attributes: name, placeholder, value, class
+    see more: https://pugjs.org/language/mixins.html#mixin-attributes
+
+    usage: +text-field('Subscribe')(name="email", class="field_subscription")
+mixin text-field(label)
+    label.field-label
+        h3 #{label}
+        input(
+            class="field"
+            type="text"
+            id=`${attributes.name}-field`
+        )&attributes(attributes)
+
+//- subscribe form
+    text field with an arrow-stylised submit button
+
+    usage: +subscribe-form('subscription label')(method="get" action="#")
+mixin subscribe-form(label)
+    form&attributes(attributes).subscribe
+        +text-field(label)(name='email' placeholder='Email')
+        button(type="submit" class="material-icons subscribe__arrow-btn") arrow_forward
+
+
 //- button-stylized link
+
 mixin link-btn(title, href, className='')
     if className.includes('btn_ghost')
         .btn-ghost-wrap
@@ -20,8 +57,3 @@ mixin link-btn(title, href, className='')
     else
         a(href=href, class=`btn ${className}`)= title
 
-//- font-awesome icon-stylized links. used in both footers
-mixin contact-links(className='')
-    a(href='#' class=`${className} fab fa-twitter`)
-    a(href='#' class=`${className} fab fa-facebook-square`)
-    a(href='#' class=`${className} fab fa-instagram`)
