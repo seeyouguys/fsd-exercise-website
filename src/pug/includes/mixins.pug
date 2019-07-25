@@ -49,7 +49,6 @@ mixin subscribe-form(label)
 
 
 //- button-stylized link
-
 mixin link-btn(title, href, className='')
     if className.includes('btn_ghost')
         .btn-ghost-wrap
@@ -57,3 +56,21 @@ mixin link-btn(title, href, className='')
     else
         a(href=href, class=`btn ${className}`)= title
 
+//- checkbox
+    becomes checkbox_rich if optional block of content provided
+
+    usage: 
+        +checkbox('Можно курить')(name='isSmokingAllowed' id='smoking-field')
+        +checkbox('Широкий коридор')(name='wideCorridor' id='corridor-field' checked)
+            | Ширина коридоров в номере не менее 91 см.
+mixin checkbox(label)
+    label.checkbox-container
+
+        input.checkbox(type="checkbox")&attributes(attributes)
+        div.checkbox-custom
+
+        .checkbox-label-wrap
+            span(class=`checkbox-label ${block ? 'checkbox-label_rich' : ''}`)
+                | #{label}
+            if block
+                p.checkbox-info: block

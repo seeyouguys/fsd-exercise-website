@@ -53,6 +53,83 @@
 // CONTROLS
 //
 
+// hide default and create custom checkbox,
+// checkmark is just two rectangles one overlayering the other
+.checkbox {
+     // hide the browser's default checkbox
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+
+    &-container {
+        display: flex;
+        margin-bottom: 9px;
+    }
+    
+    // label text
+    &-label {
+        font: 14px/20px $font-content;
+        
+        &-wrap {
+            margin-left: 10px;
+            max-width: 236px
+        }
+        &_rich {
+            font-weight: bold;
+        }
+    }
+    &-info {
+        font: 12px/14px $font-content;
+        color: rgba($color-shade, .5);
+        margin: 5px 0 0 0 ;
+    }
+    
+    // custom checkbox
+    &-custom { 
+        position: relative;
+        width: 20px;
+        height: 20px;
+        background-color: $color-bg;
+        
+        box-sizing: border-box;
+        border: 1px solid rgba($color-shade, .25);
+        border-radius: 4px;
+    }
+    
+    // checkmark (white rectangle)
+    &-custom::after, &-custom::before {
+        content: '';
+        display: block;
+        background-color: $color-bg;
+        
+        width: 6px;
+        height: 8px;
+        transform: rotate(45deg);
+
+        // values were picked up empirically
+        position: absolute;
+        top: 0.5px; // it needs to be a little bit higher
+        left: 5.5px;
+    }
+    // checkmark (gradient rectangle)
+    &-custom::before {
+        display: none;
+        top: 3.5px; 
+        background: $color-gradient;
+    }
+    // "selector1 ~ selector2" takes all elems matching second selector
+    // which are placed after the elems matching first one.
+    &:checked ~ &-custom::before {
+        display: block;
+    }
+    &:checked ~ &-custom {
+        border-color: $color-primary;
+    }
+}
+
+
 // link-btn
 // button-stylized link
 .btn {
