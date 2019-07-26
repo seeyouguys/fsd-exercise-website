@@ -58,16 +58,21 @@ mixin link-btn(title, href, className='')
 
 //- checkbox
     becomes checkbox_rich if optional block of content provided
+    becomes toggle if 'isToggle' attribute is provided
 
     usage: 
         +checkbox('Можно курить')(name='isSmokingAllowed' id='smoking-field')
         +checkbox('Широкий коридор')(name='wideCorridor' id='corridor-field' checked)
             | Ширина коридоров в номере не менее 91 см.
-mixin checkbox(label)
+        +checkbox('Получать спецпредложения', 'toggle')(name="get-offers" checked)
+mixin checkbox(label, isToggle)
     label.checkbox-container
 
         input.checkbox(type="checkbox")&attributes(attributes)
-        div.checkbox-custom
+        if isToggle
+            div.toggle
+        else 
+            div.checkbox-custom
 
         .checkbox-label-wrap
             span(class=`checkbox-label ${block ? 'checkbox-label_rich' : ''}`)
