@@ -305,3 +305,31 @@
         transform-origin: top;
     }
 }
+
+// bullet-list
+.bullet-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    font: 14px/24px $font-content;
+    color: rgba($color-shade, .75);
+
+    & li {
+        margin-bottom: 10px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &::before {
+            content: '';
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin-right: 11px;
+            border-radius: 100%;
+            background-color: rgba($color-shade, .25);
+        }
+    }
+}
