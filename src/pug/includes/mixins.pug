@@ -119,3 +119,17 @@ mixin expandable-list(label, isHidden)
         
     .exp-list__content
         block
+
+
+
+//-  MISC
+
+//- benefit
+    short phrase w/ info and icon from material-icons
+
+    usage: +benefit('Комфорт', 'Шумопоглощающие стены', 'insert_emoticon')
+mixin benefit(title, info, iconName)
+    .benefit-wrap
+        span.material-icons.benefit__icon #{iconName}
+        strong.benefit__title #{title}
+        p.benefit__info #{info}
