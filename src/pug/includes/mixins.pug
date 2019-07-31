@@ -48,13 +48,32 @@ mixin subscribe-form(label)
         button(type="submit" class="material-icons subscribe__arrow-btn") arrow_forward
 
 
-//- button-stylized link
-mixin link-btn(title, href, className='')
-    if className.includes('btn_ghost')
-        .btn-ghost-wrap
-            a(href=href, class=`btn ${className}`)= title
+//- btn or button-stylized link
+
+    class attribute is required, additional classes are allowed
+    renderds a button if btn_text class applied, or link otherwise
+    
+    usage:
+        +btn('click me')(href='#', class='btn_primary, another_style-class')
+        +btn('click me')(href='#', class='btn_ghost')
+        +btn('click me')(href='#', class='btn_text')
+mixin btn(label)
+    if attributes.class.includes('btn_text')
+        button.btn&attributes(attributes)= label
     else
-        a(href=href, class=`btn ${className}`)= title
+        a.btn&attributes(attributes)= label
+                
+
+//- big-btn
+
+    wide (stratch to the parent's width) filled button-styled link with an icon
+
+    usage: +big-btn('click me', 'face')(href='#')
+mixin big-btn(label, iconName='arrow_forward')
+    a.btn.btn_primary.btn_big&attributes(attributes)
+        span= label
+        span.material-icons.btn__icon= iconName
+
 
 //- checkbox
     becomes checkbox_rich if optional block of content provided
