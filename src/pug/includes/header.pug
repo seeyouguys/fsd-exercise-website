@@ -18,8 +18,8 @@ header.header
         
         .header__section.header__profile
             if !userName
-                +link-btn('login', '#', 'btn_ghost')
-                +link-btn('register', '#')
+                +btn('login')(href='#' class='btn_ghost btn_slim')
+                +btn('register')(href='#' class='btn_primary btn_slim')
             else
                 span.username #{userName}
             
