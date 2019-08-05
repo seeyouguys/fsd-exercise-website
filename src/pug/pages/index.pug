@@ -2,9 +2,16 @@ extends ../layout/main
     
 block variables
     - var title= "Toxin отель"
-    - var userName= 'Cosmin Negoita'
+    //- - var userName= 'Cosmin Negoita'
 
 block content
-    include ../includes/header
-    include ../includes/footer_creative
-    
+
+    -
+        // defaults: minCount: 0, maxCount: 9, so they are optional
+        var items = [
+            { title: 'взрослые', dataID:'adults', defaultCount: 2 },
+            { title: 'дети',     dataID:'children', minCount: 1 },
+            { title: 'младенцы', dataID:'infant', maxCount: 1}
+        ]
+    +quantity-dropdown(items, itemsNamePlural)(class='guests')
+

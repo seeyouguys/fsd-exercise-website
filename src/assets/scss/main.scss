@@ -6,7 +6,8 @@
 body {
   color: rgba($color-shade, .75);
   box-sizing: border-box;
-  background-color: #F4F4F6;
+  background-color: #fff;
+  padding: 140px;
 }
 
 h1 {
@@ -29,3 +30,4 @@ h3 {
 @import 'modules/form-elements.scss';
 @import 'modules/footer.scss';
 @import 'modules/misc.scss';
+@import 'modules/quantity-dropdown.scss';
