@@ -218,10 +218,18 @@
     &_text {
         padding: 0;
         background: none;
-        @include text-color($color-gradient);
-        &:hover {
-            background: none;
+        
+        // btn.btn_text.btn_text-secondary
+        &-secondary {
             color: rgba($color-shade, .5);
+        }
+
+        // btn.btn_text.btn_text-primary
+        &-primary {
+            @include text-color($color-gradient);
+        }
+        &:hover {
+            opacity: .5;
         }
     }
     

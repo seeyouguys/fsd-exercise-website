@@ -10,9 +10,9 @@
                 { title: 'младенцы', dataID:'infant', maxCount: 1}
             ]
     
-        +quantity-dropdown(items)(class='guests || rooms')
+        +quantity-dropdown(items)(id='guests-quantity' class="guests || rooms")
 mixin quantity-dropdown(items)
-    .iqdropdown.field&attributes(attributes)
+    .iqdropdown.field.menu-open&attributes(attributes)
         p.iqdropdown-selection
         
         .iqdropdown-menu
@@ -25,5 +25,7 @@ mixin quantity-dropdown(items)
                 )
                     div
                         p.iqdropdown-item= item.title
-                    
-            button.iqdropdown-menu-close Cerrar
+            
+            .iqdropdown-menu-buttons
+                button(class="button-clear") очистить
+                button(class="button-apply") применить

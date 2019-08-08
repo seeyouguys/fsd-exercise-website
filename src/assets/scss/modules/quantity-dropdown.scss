@@ -86,7 +86,7 @@
     right: 0;
     top: 44px;
     transition: all 0.2s ease-in-out;
-    z-index: 99999;
+    z-index: 99;
 }
 
 .iqdropdown-menu-option {
@@ -100,6 +100,17 @@
 
 }
 
+// container for "clear", "apply" buttons
+.iqdropdown-menu-buttons {
+    height: 39px;
+    padding-left: 14px;
+    padding-right: 6px;
+    padding-top: 6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
 // dunno what it is
 // .iqdropdown-menu-close {
@@ -173,9 +184,20 @@
             display: block
         }
     }
+
+    // if any value was changed
+    .button-clear {
+        opacity: 0;
+    }
+    &.menu-changed {
+        & .button-clear {
+            opacity: 1;
+        }
+    }
     
+    // rotated "expand" icon
     &.menu-open .iqdropdown-selection::after {
-        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAMCAMAAABGBS09AAAAe1BMVEVMaXH///+ZmZmqqqqVlZWdnZ2Xl5eVlZWVlZWUlJSQkJCUlJSTk5ORkZGRkZGRkZGSkpKRkZGSkpKSkpKRkZGQkJCRkZGRkZGRkZGQkJCSkpKRkZGRkZGRkZGRkZGRkZGRkZGRkZGQkJCRkZGQkJCRkZGQkJCRkZGQkJAwdLQhAAAAKHRSTlMAAQUGDA0bHSQmNTdHSEpYWV1gbnKIi5SZqqqytcfJzNfZ5uf19fn+jEECQQAAAIhJREFUeNqNj+cSwkAIhLn0Znoz7dLD+z9hII6OJTruH5b9mDuAv2VKaX5BSjojLqlyxi49Huq9D2TVlG/VdaNSWy9Iy1YKOxfA7cismfZAIhopmWJxNPFEzRiJG3NaHs71+6ye8zOtwz7kbxobnmQ3vEBArkAcfHiTPyAWVI0yOTlNTUoDfmoHOBIMkOONx34AAAAASUVORK5CYII=)
+        // background-image: url(/assets/img/baseline-expand_more-24px.svg);
     }
 }
 
@@ -187,17 +209,15 @@
     position: relative;
 
     &::after {
-        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAMCAMAAABGBS09AAAAeFBMVEVMaXGVlZWRkZGRkZH///+UlJSRkZGQkJCRkZGZmZmRkZGRkZGSkpKRkZGVlZWQkJCdnZ2QkJCVlZWUlJSQkJCXl5eRkZGSkpKRkZGSkpKRkZGRkZGRkZGRkZGQkJCQkJCRkZGSkpKQkJCRkZGTk5OSkpKRkZGQkJAWlBl2AAAAJ3RSTlMAHcnXATdy+f4FzLJg5ySKDYgMJuYbSm61XtmUmcc1qkiq9fVHWVidqGmEAAAAhUlEQVR42o2O5w7CYAhF6e7XvfdwtN73f0OhatLUxnj+wMklAP2mHGpFX6h6KLn0QFcds6oDeq6rC6DJ91HeAHAf0k4jACdOPlESOwDG6WVmW7CFgblJELIULcubLJVh3SKydFmTZrQn8uXMdZYH/IiOXAxsGAudoOwbcLcVnaN5nkb/8gRapQtVGGewNQAAAABJRU5ErkJggg==);
+        background-image: url(/assets/img/baseline-expand_more-24px.svg);
         background-position: center;
         background-repeat: no-repeat;
-        background-size: contain;
         content: '';
         display: inline-block;
-        height: 5px;
+        height: 18px;
         width: 12px;
         position: absolute;
         right: 0;
-        top: 40%
     }
 }
 

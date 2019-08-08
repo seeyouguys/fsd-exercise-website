@@ -28,6 +28,7 @@ import getPluralNoun from './pluralRus';
       const $selection = $this.find('p.iqdropdown-selection').last();
       const $menu = $this.find('div.iqdropdown-menu');
       const $items = $menu.find('div.iqdropdown-menu-option');
+      const $dropdownButtons = $menu.find('div.iqdropdown-menu-buttons');
       const settings = $.extend(true, {}, defaults, options);
       const itemCount = {};
       let totalItems = 0;
@@ -43,6 +44,9 @@ import getPluralNoun from './pluralRus';
       function updateButtons ($incrementButton, $decrementButton, itemCount, item) {
         $decrementButton.toggleClass('iqdropdown-button_disabled', itemCount <= item.minCount)
         $incrementButton.toggleClass('iqdropdown-button_disabled', itemCount >= item.maxCount)
+
+        // show "clear" button if anything was decremented/incremented
+        $this.addClass('menu-changed');
       }
 
       function setItemSettings (id, $item) {
@@ -116,7 +120,39 @@ import getPluralNoun from './pluralRus';
         return $item;
       }
 
-      $this.click(() => {
+      // generate template for "clear" and "apply" buttons
+      function addDropdownButtons () {
+        // if these elements were provided by markup, work with them
+        const $buttonClear = $dropdownButtons.find('.button-clear')
+        $buttonClear.addClass('btn btn_text btn_text-secondary')
+        
+        const $buttonApply = $dropdownButtons.find('.button-apply')
+        $buttonApply.addClass('btn btn_text btn_text-primary')
+        
+        // reset all itemCount to 0
+        // TODO: it should reset to the every item's minCount instead of a 0
+        $buttonClear.click(event => {
+          for (let id in itemCount) {
+            itemCount[id] = 0
+          }
+          
+          $items.find('.counter').text('0')
+          totalItems = 0
+          updateDisplay()
+          
+          // temp solution
+          $items.find('.button-decrement').addClass('iqdropdown-button_disabled')
+          $items.find('.button-increment').removeClass('iqdropdown-button_disabled')
+        })
+
+        // functionality for "apply" button
+        $buttonApply.click(event => {
+          $this.toggleClass('menu-open');
+        })
+      }
+
+      // hide/show dropdown if it's header was clicked
+      $selection.click(() => {
         $this.toggleClass('menu-open');
       });
 
@@ -131,6 +167,7 @@ import getPluralNoun from './pluralRus';
         addControls(id, $item);
       });
 
+      addDropdownButtons();
       updateDisplay();
     });
 
