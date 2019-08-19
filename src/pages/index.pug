@@ -1,0 +1,14 @@
+extends ../layout/layout-base
+    
+
+include ../../components/login-form/login-form
+
+block variables
+    - var title= "Toxin отель"
+
+block main
+    +login-form()
+    ul.bullet-list
+        li test
+        li да
+    

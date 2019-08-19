@@ -1,0 +1,19 @@
+//- expandable-list
+    css-only dropdown for checkboxes:
+    dropdown's header labeled to a hidden checkbox,
+    so depending on it's 'checked' state, content block is flipping 
+
+    id must be provided if there is more than one exp-list on the page
+
+    +expandable-list('expandable checkbox list', 'hidden')(id='meals')
+        +checkbox('Завтрак')(name='breakfast')
+        +checkbox('Обед')(name='dinner')
+mixin expandable-list(label, isHidden)
+    input(type="checkbox" checked=isHidden id=attributes.id).exp-list__checkbox
+    
+    label(for=attributes.id).exp-list__label
+        span #{label}
+        span.material-icons.exp-list__icon expand_less
+        
+    .exp-list__content
+        block

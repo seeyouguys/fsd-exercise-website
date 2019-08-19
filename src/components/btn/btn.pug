@@ -1,0 +1,42 @@
+//- btn or button-stylized link
+
+    class attribute is required, additional classes are allowed
+    renderds a button if btn_text class applied, or link otherwise
+    
+    button types (also the are classnames you should use):
+        btn_primary btn_ghost btn_text btn_big
+        btn_big - wide (stratch to the parent's width) filled true button with an icon
+    
+    usage:
+        +btn({ text: 'click me', href: '#', class: 'btn_primary' })
+        +btn({ text: 'click me', href: '#', class: 'btn_ghost' })
+        +btn({ text: 'click me', href: '#', class: 'btn_text'})
+
+//- TODO: add button classes' descriptions
+mixin btn(options)
+    
+    //- btn_text should be a true button, not a link
+    if options.class.includes('btn_text')
+        button(
+            class= 'btn btn_text',
+            href= options.href,
+            id= options.id
+        )= options.text
+    
+    //- big_btn displays as a block and comes with an icon
+    if options.class.includes('btn_big')
+        button(
+            class= 'btn btn_primary btn_big ',
+            href= options.href,
+            id= options.id
+        )
+            span= options.text
+            span.material-icons.btn__icon= options.iconName || 'arrow_forward'
+    
+    //- btn_ghost and btn_primary
+    else 
+        a(
+            class= 'btn ' + options.class,
+            href= options.href,
+            id= options.id
+        )= options.text

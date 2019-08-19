@@ -1,0 +1,17 @@
+//- radio-btns
+    a group of radio buttons
+
+    usage:
+        +radio-group([
+            { label: 'Мужчина', value: "male", checked: true },
+            { label: 'Женщина', value: "female" }
+        ])(name="gender")
+mixin radio-group(items)
+    each item in items
+        label.radio-container
+
+            input.radio(type="radio" name=attributes.name)&attributes(item)
+            div.radio-custom
+            
+            .radio-label-wrap
+                span.radio-label #{item.label}

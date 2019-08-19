@@ -1,9 +1,5 @@
 // JS
-import './js/'
+import './scripts/'
 
 // SCSS
-import './assets/scss/main.scss'
-
-// CSS (example)
-// import './assets/css/main.css'
-
+import './styles/main.scss'

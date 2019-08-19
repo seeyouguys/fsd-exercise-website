@@ -1,0 +1,66 @@
+@import "utils/libs";
+@import "utils/vars";
+@import "utils/mixins";
+@import "utils/fonts";
+
+body {
+  color: rgba($color-shade, .75);
+  box-sizing: border-box;
+  background-color: #fff;
+  padding: 140px;
+}
+
+h1 {
+  font: bold 24px/30px $font-title;
+  color: $color-shade;
+}
+h2 {
+  font: bold 19px/24px $font-title;
+  color: $color-shade;
+}
+h3 {
+  font: bold 12px/15px $font-content;
+  color: $color-shade;
+  text-transform: uppercase;
+}
+
+// bullet-list
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  font: 14px/24px $font-content;
+  color: rgba($color-shade, .75);
+
+  & li {
+      margin-bottom: 10px;
+
+      &:last-child {
+          margin-bottom: 0;
+      }
+
+      &::before {
+          content: '';
+          display: inline-block;
+          width: 10px;
+          height: 10px;
+          margin-right: 11px;
+          border-radius: 100%;
+          background-color: rgba($color-shade, .25);
+      }
+  }
+}
+
+// Components
+@import 'modules/header.scss';
+@import 'modules/menu.scss';
+@import 'modules/form-elements.scss';
+@import 'modules/misc.scss';
+@import 'modules/quantity-dropdown.scss';
+
+@import '../components/text-field/text-field.scss';
+@import '../components/login-form/login-form.scss';
+@import '../components/footer/footer.scss';
+@import '../components/btn/btn.scss';
+@import '../components/bullet-list/bullet-list.scss';

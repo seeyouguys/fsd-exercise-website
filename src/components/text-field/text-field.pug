@@ -1,0 +1,30 @@
+//- text field
+    
+    options: {
+        label: "title above the field"
+        name: "input's name attribute"
+        class: "aditional classes"
+    }
+    ...and any other default input's attributes like id, placeholder, value, etc
+
+    example:
+        +text-field({ 
+                label: null,
+                name: "email", 
+                placeholder: "Email", 
+                type: "email", 
+                class: "login-form__field" 
+            })
+
+mixin text-field(options)
+    label(class= 'text-field ' + options.class)
+    
+        if options.label
+            h3.field-label= options.label
+
+        - delete options.class
+        - delete options.label
+        input(
+            class= "field"
+            type= "text"
+        )&attributes(options)
