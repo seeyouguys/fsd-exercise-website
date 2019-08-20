@@ -1,0 +1,53 @@
+@import '../../theme/variables.scss';
+body, html {
+    margin: 0;
+    padding: 0;
+}
+// 
+// Colors and fonts
+//
+
+.colors-and-fonts {
+    padding: 145px 150px;
+    background-color: $color-bg;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.colors {
+    display: grid;
+    row-gap: 20px;
+}
+
+.fonts {
+    display: grid;
+    grid-template-columns: 40px 340px;
+    column-gap: 30px;
+    row-gap: 50px;
+}
+
+.muted-text {
+    margin: 0;
+    padding: 0;
+
+    text-transform: capitalize;
+    color: rgba($color-shade, .25);
+    font-weight: normal;
+    text-align: right;
+}
+
+.font-demo {
+    margin: 0;
+    padding: 0;
+}
+
+//
+// Form Elements
+//
+
+.form-elements {
+    background-color: $color-bg;
+    padding: 140px;
+}

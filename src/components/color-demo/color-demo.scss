@@ -1,0 +1,17 @@
+@import '../../theme/variables.scss';
+
+.color-demo {
+    display: flex;
+    align-items: center;
+}
+
+.color-demo__sample {
+    width: 70px;
+    height: 70px;
+    margin-right: 40px;
+    border-radius: 6px;
+}
+
+.color-demo__name {
+    margin: 0;
+}

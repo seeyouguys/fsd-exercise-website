@@ -1,9 +1,10 @@
-footer.footer.footer_creative
-    .footer-wrap.footer-wrap_creative
+mixin footer_creative()
+    footer.footer.footer_creative
+        .footer-wrap.footer-wrap_creative
 
-        img.footer__logo(src="/assets/img/toxin-logo.svg", alt="Toxin logo")
+            img.footer__logo(src="/assets/img/toxin-logo.svg", alt="Toxin logo")
 
-        .footer__section.footer__text
-            | Lorem ipsum dolor sit amet consectetur adipiscing elit aliquam eget nullam pellentesque aliquam curabitur cociis.
-        .footer__section.footer__contact-links
-            +contact-links('footer__icon')
+            .footer__section.footer__text
+                | Lorem ipsum dolor sit amet consectetur adipiscing elit aliquam eget nullam pellentesque aliquam curabitur cociis.
+            .footer__section.footer__contact-links
+                +contact-links('footer__icon')

@@ -1,7 +1,7 @@
-@import "utils/libs";
-@import "utils/vars";
-@import "utils/mixins";
-@import "utils/fonts";
+// @import "utils/libs";
+@import "./variables";
+// @import "utils/mixins";
+// @import "utils/fonts";
 
 body {
   color: rgba($color-shade, .75);
@@ -51,16 +51,3 @@ ul {
       }
   }
 }
-
-// Components
-@import 'modules/header.scss';
-@import 'modules/menu.scss';
-@import 'modules/form-elements.scss';
-@import 'modules/misc.scss';
-@import 'modules/quantity-dropdown.scss';
-
-@import '../components/text-field/text-field.scss';
-@import '../components/login-form/login-form.scss';
-@import '../components/footer/footer.scss';
-@import '../components/btn/btn.scss';
-@import '../components/bullet-list/bullet-list.scss';
