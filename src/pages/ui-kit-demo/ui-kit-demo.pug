@@ -1,11 +1,12 @@
 extends ../../layouts/base-layout
 
 include ../../components/color-demo/color-demo
+include ../../components/text-field/text-field
 
 
 block main
 
-    article.colors-and-fonts
+    //- article.colors-and-fonts
         .colors
             +color-demo({ name: 'Dark Shade 100%', color: '#1F2041' })
             +color-demo({ name: 'Dark Shade 75%', color: '#1F2041', opacity: '.75' })
@@ -34,3 +35,23 @@ block main
             p.font-demo.
                 This is the body text which is used for most
                 of the design, like paragraphs, lists, etc.
+
+    article.form-elements
+        +text-field({ 
+                label: 'Text field',
+                inputAttributes: {
+                    name: "email", 
+                    type: "email", 
+                    placeholder: "Email"
+                }
+            })
+        
+        +text-field({ 
+                label: 'Masked text field',
+                inputAttributes: {
+                    name: "date", 
+                    type: "text", 
+                    placeholder: "ДД.ММ.ГГГГ", 
+                    'data-mask': '00/00/0000'
+                }
+            })
