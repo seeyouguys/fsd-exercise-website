@@ -110,11 +110,13 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: `${PATHS.assets}css/[name].[hash].css`,
     }),
-    // new CopyWebpackPlugin([
-    //   { from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img` },
-    //   { from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts` },
-    //   { from: `${PATHS.src}/static`, to: '' },
-    // ]),
+    
+    // copy all fonts from src/theme/fonts/ directory to dist/assets/fonts/
+    new CopyWebpackPlugin([
+      // { from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img` },
+      { from: `${PATHS.src}/theme/fonts`, to: `${PATHS.assets}fonts` },
+      // { from: `${PATHS.src}/static`, to: '' },
+    ]),
 
     // take .pug page which name matches the foldername and convert it into .html
     ...PAGES.map(page => new HtmlWebpackPlugin({
