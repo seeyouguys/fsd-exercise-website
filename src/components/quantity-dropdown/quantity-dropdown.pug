@@ -1,22 +1,25 @@
 //- quantity dropdown
-    dropdown with counters, powered with item-quntity-dropdown plugin
+    dropdown with counters, powered with an item-quntity-dropdown plugin
 
-    usage: 
-        - 
-            // defaults: minCount: 0, maxCount: 9, defaultCount === minCount || 0
-            var items = [
+    // defaults for items: minCount: 0, maxCount: 9, defaultCount = minCount || 0
+    
+    example: 
+        +quantity-dropdown({
+            attributes: {
+                id='guests-quantity',
+            }
+            items: [
                 { title: 'взрослые', dataID:'adults', defaultCount: 2 },
                 { title: 'дети',     dataID:'children', minCount: 1 },
                 { title: 'младенцы', dataID:'infant', maxCount: 1}
             ]
-    
-        +quantity-dropdown(items)(id='guests-quantity' class="guests || rooms")
-mixin quantity-dropdown(items)
-    .iqdropdown.field.menu-open&attributes(attributes)
+        )}
+mixin quantity-dropdown(options)
+    .iqdropdown.field&attributes(options.attributes)
         p.iqdropdown-selection
         
         .iqdropdown-menu
-            each item, i in items
+            each item, i in options.items
                 .iqdropdown-menu-option(
                     data-id= item.dataID
                     data-mincount= item.minCount || 0

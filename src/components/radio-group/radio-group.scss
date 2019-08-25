@@ -1,17 +1,29 @@
-// radio-group
-.radio {
-    // hide the browser's default radio
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
+@import '../../theme/variables.scss';
 
-    &-container {
-        display: inline-flex;
+// radio-group item
+.radio {
+    display: inline-flex;
+    margin-right: 20px;
+    line-height: 20px;
+    
+    // hide the browser's default radio
+    &-default {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+
+        // display point inside custom radio button if it is checked
+        &:checked ~ .radio-custom::after {
+            display: block;
+        }
+        &:checked ~ .radio-custom{
+            border-color: $color-primary;
+        }
     }
     
-    // create custom one
+    // create custom radio button
     &-custom {
         position: relative;
         display: inline-block;
@@ -22,9 +34,7 @@
         border-radius: 100%;
         border: 1px solid rgba($color-shade, .25);
     }
-    &:checked ~ &-custom{
-        border-color: $color-primary;
-    }
+    
 
     // point inside radio
     &-custom::after {
@@ -40,15 +50,9 @@
         border-radius: 100%;
         background: $color-gradient;
     }
-    &:checked ~ &-custom::after {
-        display: block;
-    }
 
     &-label {
-        font: 14px/20px $font-content;
-        &-wrap {
-            display: inline-block;
-            margin-left: 10px;
-        }
+        margin-left: 10px;
     }
+
 }

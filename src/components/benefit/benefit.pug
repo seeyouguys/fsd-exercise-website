@@ -1,9 +1,10 @@
 //- benefit
     short phrase w/ info and icon from material-icons
 
-    usage: +benefit('Комфорт', 'Шумопоглощающие стены', 'insert_emoticon')
-mixin benefit(title, info, iconName)
-    .benefit-wrap
-        span.material-icons.benefit__icon #{iconName}
-        strong.benefit__title #{title}
-        p.benefit__info #{info}
+    example: 
+        +benefit({ title: 'Комфорт', info: 'Шумопоглощающие стены', iconName: 'insert_emoticon'})
+mixin benefit({ title, info, iconName })
+    .benefit
+        span.material-icons.benefit__icon= iconName
+        strong.benefit__title= title
+        p.benefit__info= info

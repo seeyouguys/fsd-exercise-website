@@ -1,41 +1,59 @@
+@import '../../theme/variables.scss';
+
 // hide default and create custom checkbox,
 // checkmark is just two rectangles one overlayering the other
 .checkbox {
-    // hide the browser's default checkbox
-   position: absolute;
-   opacity: 0;
-   cursor: pointer;
-   height: 0;
-   width: 0;
+    display: flex;
+    line-height: 18px;
 
-   &-container {
-       display: flex;
-       margin-bottom: 9px;
-   }
+    // hide the browser's default checkbox
+    &-default {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+
+        // "selector1 ~ selector2" takes all elems matching second selector
+        // which are placed after the elems matching the first one.
+        // thus, the rule below applies only when the hidden checkbox is checked
+        &:checked {
+            ~.checkbox-custom {
+                border-color: $color-primary;
+            }
+
+            ~.checkbox-custom::before {
+                display: block;
+            }
+        }
+    }
    
-   // label text
+   // label, it's text and optional info block
    &-label {
-       font: 14px/20px $font-content;
-       
-       &-wrap {
-           color: rgba($color-shade, .5);
-           margin-left: 10px;
-           max-width: 236px
-       }
-       &_rich {
-           color: rgba($color-shade, .75);
-           font-weight: bold;
-       }
-   }
-   &-info {
-       font: 12px/14px $font-content;
        color: rgba($color-shade, .5);
-       margin: 5px 0 0 0 ;
+       margin-left: 10px;
+
+       &__text {
+           font-size: 14px;
+           line-height: 20px;
+
+           &_rich {
+               color: rgba($color-shade, .75);
+               font-weight: bold;
+           }
+       }
+
+       &__info {
+           font: 12px/14px $font-content;
+           color: rgba($color-shade, .5);
+           margin: 5px 0 0 0;
+       }
    }
-   
+
    // custom checkbox
    &-custom { 
        position: relative;
+       min-width: 20px;
        width: 20px;
        height: 20px;
        background-color: $color-bg;
@@ -66,58 +84,5 @@
        top: 3.5px; 
        background: $color-gradient;
    }
-   // "selector1 ~ selector2" takes all elems matching second selector
-   // which are placed after the elems matching the first one.
-   &:checked {
-       ~ .checkbox-custom {
-           border-color: $color-primary;
-       }
-
-       ~ .checkbox-custom::before {
-           display: block;
-       }
-
-       // if checbox needs to be toggle-styled
-       ~ .toggle {
-           border-color: $color-primary;
-           
-           &::after {
-               left: 23px;
-               background: $color-gradient;
-           }
-       }
-   }
 }
 
-// toggle
-// addition to checkbox
-.toggle {
-    display: inline-block;
-    position: relative;
-    height: 20px;
-    width: 40px;
-    
-    box-sizing: border-box;
-    border: 1px solid rgba($color-shade, .25);
-    border-radius: 10px;
-
-    // point inside the toggle
-    &::after {
-        content: '';
-        display: block;
-        width: 12px;
-        height: 12px;
-
-        position: absolute;
-        top: 3px;
-        left: 3px;
-        transition: 70ms left ease-in;
-
-        border-radius: 100%;
-        background: rgba($color-shade, .25);
-    }
-
-    ~ .checkbox-label-wrap {
-        color: rgba($color-shade, .75);
-    }
-}

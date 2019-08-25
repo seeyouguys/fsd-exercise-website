@@ -1,6 +1,6 @@
 import './text-field.scss'
 
-// import 'jquery'
+import 'jquery'
 // https://www.npmjs.com/package/jquery-mask-plugin
 // docs: https://igorescobar.github.io/jQuery-Mask-Plugin/docs.html
 // TLDR:

@@ -1,3 +1,6 @@
+@import '../../theme/variables.scss';
+
+
 // expandable-list
 // dropdown's header labeled to a hidden checkbox,
 // so depending on it's 'checked' state, content block is flipping 
@@ -37,5 +40,10 @@
         min-height: 40px; // animation looks stupid w/o min-height
         transition: transform 100ms ease-in, min-height 120ms ease-in;
         transform-origin: top;
+
+        display: grid;
+        grid-auto-flow: row;
+        row-gap: 10px;
+        margin-top: 13px;
     }
 }

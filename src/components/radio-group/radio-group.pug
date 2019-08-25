@@ -1,0 +1,25 @@
+//- radio-group
+    a group of radio buttons
+
+    options.name - html 'name' attribute uniting the radio buttons
+    options.items - an array of the options
+        items.label - text near the radio button
+        items.value - input's html 'value' attribute
+        and any other input's attribute could be used inside the item
+
+    example:
+        +radio-group({
+            name: 'gender',
+            items: [
+                { label: 'Мужчина', value: "male", checked: true },
+                { label: 'Женщина', value: "female" }
+            ]
+        })
+mixin radio-group(options)
+    each item in options.items
+        label.radio
+
+            input.radio-default(type="radio" name= options.name)&attributes(item)
+            div.radio-custom
+            
+            span.radio-label= item.label

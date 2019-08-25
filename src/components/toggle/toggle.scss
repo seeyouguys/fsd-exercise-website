@@ -1,0 +1,54 @@
+@import '../../theme/variables.scss';
+
+.toggle {
+    line-height: 20px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 10px;
+}
+
+// checkbox based toggle
+.toggle-custom {
+    display: inline-block;
+    position: relative;
+    height: 20px;
+    width: 40px;
+
+    box-sizing: border-box;
+    border: 1px solid rgba($color-shade, .25);
+    border-radius: 10px;
+
+    // point inside the toggle
+    &::after {
+        content: '';
+        display: block;
+        width: 12px;
+        height: 12px;
+
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        transition: 70ms left ease-in;
+
+        border-radius: 100%;
+        background: rgba($color-shade, .25);
+    }
+}
+
+// hide default checkbox
+.checkbox-default {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+
+    &:checked ~ .toggle-custom {
+        border-color: $color-primary;
+        
+        &::after {
+            left: 23px;
+            background: $color-gradient;
+        }
+    }
+}

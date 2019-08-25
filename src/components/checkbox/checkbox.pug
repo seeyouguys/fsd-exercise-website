@@ -1,25 +1,26 @@
 //- checkbox
-    becomes checkbox_rich if optional block of content provided
-    becomes toggle if 'isToggle' attribute is provided
 
-    usage: 
-        +checkbox('Можно курить')(name='isSmokingAllowed' id='smoking-field')
-        +checkbox('Широкий коридор')(name='wideCorridor' id='corridor-field' checked)
+    custom checkbox input
+    becomes checkbox_rich if optional block of content is provided
+
+    example: 
+        +checkbox({ label: 'Можно курить', attributes: { name: 'isSmokingAllowed', id: 'smoking-field' } })
+
+        +checkbox({ label: 'Широкий коридор', attributes: { name: 'wideCorridor' } })
             | Ширина коридоров в номере не менее 91 см.
-        +checkbox('Получать спецпредложения', 'toggle')(name="get-offers" checked)
+mixin checkbox(options)
+    if !options
+        - options = {}
 
-//- TODO: divide checkbox and toggle into 2 separate components
-mixin checkbox(label, isToggle)
-    label.checkbox-container
+    - var labelTextClass = `checkbox-label__text`
+    - labelTextClass +=  block ? ' checkbox-label__text_rich' : ''
 
-        input.checkbox(type="checkbox")&attributes(attributes)
-        if isToggle
-            div.toggle
-        else 
-            div.checkbox-custom
 
-        .checkbox-label-wrap
-            span(class=`checkbox-label ${block ? 'checkbox-label_rich' : ''}`)
-                | #{label}
+    label.checkbox
+        input.checkbox-default(type="checkbox")&attributes(options.attributes)
+        div.checkbox-custom
+
+        .checkbox-label
+            span(class= labelTextClass)= options.label
             if block
-                p.checkbox-info: block 
+                p.checkbox-label__info: block 
