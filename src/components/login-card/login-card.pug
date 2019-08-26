@@ -1,0 +1,42 @@
+//- contains login form asking for an e-mail and a password
+
+    example: 
+        +login-card({ formAttributes: { action: '#', method: 'post' } })
+
+include ../btn/btn
+include ../text-field/text-field
+
+mixin login-card({ formAttributes })
+    
+    form.card.login-card&attributes(formAttributes)
+        h1.card__header Войти
+
+        .card__fields
+            +text-field({ 
+                label: null,
+                mix: "card__field",
+                attributes: {
+                    name: "email", 
+                    type: "email", 
+                    placeholder: "Email"
+                }
+            })
+            +text-field({ 
+                label: null,
+                mix: "card__field",
+                attributes: {
+                    name: "password", 
+                    type: "password", 
+                    placeholder: "Пароль"
+                }
+            })
+        
+        .login-card__button-submit
+            +btn({ text: 'Войти', href: '#', iconName: 'arrow_forward', class: 'btn_big' })
+        
+        .login-card__no-acc-section
+            span.login-card__no-acc-text Нет аккаунта на Toxin?
+            +btn({ text: 'Создать', href: '#', class: 'btn_ghost' })
+
+
+        

@@ -1,6 +1,7 @@
 extends ../../layouts/base-layout
 
 include ../../components/color-demo/color-demo
+
 include ../../components/text-field/text-field
 include ../../components/quantity-dropdown/quantity-dropdown
 include ../../components/checkbox/checkbox
@@ -9,6 +10,9 @@ include ../../components/toggle/toggle
 include ../../components/btn/btn
 include ../../components/expandable-list/expandable-list
 include ../../components/benefit/benefit
+
+include ../../components/login-card/login-card
+include ../../components/registration-card/registration-card
 
 
 block main
@@ -47,7 +51,7 @@ block main
         section.text-fields
             +text-field({ 
                     label: 'Text field',
-                    inputAttributes: {
+                    attributes: {
                         name: "email", 
                         type: "email", 
                         placeholder: "Email"
@@ -57,7 +61,7 @@ block main
         section.masked-text-fields
             +text-field({ 
                     label: 'Masked text field',
-                    inputAttributes: {
+                    attributes: {
                         name: "date", 
                         type: "text", 
                         placeholder: "ДД.ММ.ГГГГ", 
@@ -161,3 +165,24 @@ block main
 
         section.comments-section
             p comment placeholder
+
+    .cards-bg
+        article.cards
+            section.search-room
+                p search-room placeholder
+            
+            section.booking
+                p booking placeholder
+            
+            section.registration
+                +registration-card({ formAttributes: { action: '#', method: 'post' } })
+            
+            section.login
+                +login-card({ formAttributes: { action: '#', method: 'post' } })
+
+            section.room-preview
+                p room-preview placeholder
+            
+            section.room-preview
+                p room-preview placeholder
+            

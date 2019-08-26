@@ -1,6 +1,9 @@
-.login-form {
+@import '../../theme/variables.scss';
+
+.card {
     width: 380px;
-    padding: 39px 29px 31px;
+    padding: 29px;
+    padding-top: 39px; 
 
     box-sizing: border-box;
     border: 1px solid rgba(0, 0, 0, 0.12);
@@ -8,33 +11,42 @@
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
     
     background: $color-bg;
+
+    display: grid;
+    grid-auto-flow: row;
+    grid-row-gap: 20px;
     
     &__fields {
-        margin: 20px 0;
-    }
-
-    &__field {
-        margin-top: 10px;
-    }
-
-    &__button-enter {
-        margin: 20px 0;
+        display: grid;
+        grid-auto-flow: row;
+        row-gap: 10px;
     }
 
     &__header {
         margin: 0;
         padding: 0;
     }
+}
 
-    &__no-acc-section {
-        margin-top: 30px;
+.registration-card {
+    &__have-acc-section {
+        margin-top: 10px;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
-    &__no-acc-text {
+    &__have-acc-text {
         font: 14px/18px $font-content;
         color: #000;
+    }
+
+    &__submit-btn {
+        margin-top: 4px;
+    }
+
+    &__radio {
+        display: flex;
+        height: 24px;
     }
 }

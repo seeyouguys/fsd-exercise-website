@@ -7,8 +7,8 @@
     example:
         +text-field({ 
                 label: null,
-                mix: "login-form__field",
-                inputAttributes: {
+                mix: "login-card__field",
+                attributes: {
                     name: "email", 
                     type: "email", 
                     placeholder: "Email"
@@ -18,7 +18,7 @@
     for masking use jquery-mask-plugin
     docs: https://igorescobar.github.io/jQuery-Mask-Plugin/docs.html
     TLDR: use data-mask="00/00/0000" (or whatever other mask) as the attribute of the input
-        inputAttributes: {
+        attributes: {
             placeholder: "DD.MM.YYYY", 
             'data-mask': '00/00/0000'
         }
@@ -38,4 +38,4 @@ mixin text-field(options)
         input(
             class= "field"
             type= "text"
-        )&attributes(options.inputAttributes)
+        )&attributes(options.attributes)
