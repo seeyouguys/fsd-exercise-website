@@ -1,34 +1,20 @@
 //- contains form with a bunch of fields for filtering
 
     example: 
-        +search-options-card({ formAttributes: { action: '#', method: 'post' } }) ISN'T RELEVANT!
+        +search-options-card({ formAttributes: { action: '#', method: 'post' })
 include ../btn/btn
 
 //- TODO: replace it with a dropdown menu when it will be ready,
     text field serves only as a placeholder for dropdown
 include ../text-field/text-field
+include ../booking-duration/booking-duration
 
 mixin search-options-card({ formAttributes })
     form.card.search-options-card&attributes(formAttributes)
         h1.card__header Найдём номера под ваши пожелания
-
-        .card-fields.search-options-card__accommodation
-            +text-field({ 
-                label: 'Прибытие',
-                mix: 'card__field',
-                attributes: {
-                    placeholder: 'ДД.MM.ГГГГ', 
-                    'data-mask': '00.00.0000'
-                }
-            })   
-            +text-field({ 
-                label: 'Выезд',
-                mix: 'card__field',
-                attributes: {
-                    placeholder: 'ДД.MM.ГГГГ', 
-                    'data-mask': '00.00.0000'
-                }
-            })
+        .card-fields
+            +booking-duration()
+        
         
         .card-fields
             +text-field({ 
@@ -38,7 +24,6 @@ mixin search-options-card({ formAttributes })
                     placeholder: 'Сколько гостей', 
                 }
             })
-
+        
         .search-options-card__submit-btn
             +btn({ text: 'Подобрать номер', href: '#', iconName: 'arrow_forward', class: 'btn_big' })
-        

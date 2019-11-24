@@ -29,8 +29,7 @@
 }
 
 .search-options-card {
-    &__accomodation {
-        display: flex;
-        justify-content: space-between;
+    &__submit-btn {
+        margin-top: 12px;
     }
 }

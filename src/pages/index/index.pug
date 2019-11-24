@@ -2,12 +2,11 @@ extends ../../layouts/base-layout
     
 
 //- include ../../components/login-card/login-card
+include ../../components/search-options-card/search-options-card
 
 block variables
     - var title= "Toxin отель"
 
 block main
-    ul.bullet-list
-        li test
-        li да
-    
+    h1 date dropdown tests    
+    +search-options-card({ formAttributes: { action: '#', method: 'post' }})

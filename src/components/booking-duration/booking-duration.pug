@@ -1,0 +1,29 @@
+//- two inputs with a calendar widget showng the chosen date range
+
+    example:
+        +booking-duration()
+
+mixin booking-duration()
+    .booking-duration
+
+        +text-field({ 
+            label: 'Прибытие',
+            attributes: {
+                name: "arrival-date",
+                placeholder: "ДД.ММ.ГГГГ",
+                class: 'datepicker-here',
+                readonly: true,
+                "data-range": "true"
+            }
+        })
+
+        +text-field({ 
+            label: 'Выезд',
+            attributes: {
+                name: "departure-date",
+                placeholder: "ДД.ММ.ГГГГ",
+                class: 'datepicker-here',
+                readonly: true,
+                "data-range": "true"
+            }
+        })
