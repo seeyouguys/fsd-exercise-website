@@ -1,10 +1,6 @@
-// temp (just for demo layout)
-.footer {
-    margin-top: 150px;
-    margin-bottom: 130px;
-}
+@import '../../theme/variables.scss';
+@import '../../styles/mixins.scss';
 
-// real shit
 .footer {
     background-color: $color-bg;
     box-shadow: 0px 10px 20px rgba($color-shade, .05);
