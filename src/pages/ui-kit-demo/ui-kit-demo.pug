@@ -11,6 +11,7 @@ include ../../components/btn/btn
 include ../../components/expandable-list/expandable-list
 include ../../components/benefit/benefit
 
+include ../../components/search-options-card/search-options-card
 include ../../components/login-card/login-card
 include ../../components/registration-card/registration-card
 
@@ -169,7 +170,7 @@ block main
     .cards-bg
         article.cards
             section.search-room
-                p search-room placeholder
+                +search-options-card({ formAttributes: { action: '#', method: 'get' }})
             
             section.booking
                 p booking placeholder

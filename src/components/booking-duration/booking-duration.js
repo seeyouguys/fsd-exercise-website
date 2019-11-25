@@ -4,13 +4,23 @@ import './booking-duration.scss'
 import 'air-datepicker'
 
 $(document).ready(() => {
-    $('.datepicker-init').datepicker({
+    // date showing fields
+    const $arrivalField = $('#arrival-date')
+    const $departureField = $('#departure-date')
+    
+    // datepicker instance (initialized automatically by class '.datepicker-here')
+    const $datepicker = $arrivalField.data('datepicker')
+    
+    // separate the date range output into 2 fields
+    $datepicker.update({
         range: true,
         multipleDatesSeparator: '-',
-        onSelect: function (formatedDate, date, inst) { 
-            // $("#start_one").val(formatedDate.split("-")[0]);
-            // $("#end_one").val(formatedDate.split("-")[1]);
-            console.log(inst)
-          }
+        onSelect: (formattedDate, jsDate, inst) => {
+            $arrivalField.val(formattedDate.split("-")[0])
+            $departureField.val(formattedDate.split("-")[1])
+        }
     })
+
+    // show the same cal even if user clicks on the departure field
+    $departureField.on('click', () => $datepicker.show())
 })

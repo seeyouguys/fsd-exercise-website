@@ -8,6 +8,7 @@ include ../btn/btn
     text field serves only as a placeholder for dropdown
 include ../text-field/text-field
 include ../booking-duration/booking-duration
+include ../quantity-dropdown/quantity-dropdown
 
 mixin search-options-card({ formAttributes })
     form.card.search-options-card&attributes(formAttributes)
@@ -16,14 +17,16 @@ mixin search-options-card({ formAttributes })
             +booking-duration()
         
         
-        .card-fields
-            +text-field({ 
-                label: 'Гости',
-                mix: 'card__field',
-                attributes: {
-                    placeholder: 'Сколько гостей', 
-                }
-            })
+        +quantity-dropdown({
+            attributes: {
+                id: 'guests-quantity',
+            },
+            items: [
+                { title: 'взрослые', dataID:'adults', defaultCount: 2 },
+                { title: 'дети',     dataID:'children', minCount: 1 },
+                { title: 'младенцы', dataID:'infant', maxCount: 1}
+            ]
+        })
         
         .search-options-card__submit-btn
             +btn({ text: 'Подобрать номер', href: '#', iconName: 'arrow_forward', class: 'btn_big' })
