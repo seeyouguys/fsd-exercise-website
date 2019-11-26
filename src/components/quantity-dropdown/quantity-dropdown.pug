@@ -5,6 +5,7 @@
     
     example: 
         +quantity-dropdown({
+            label: 'Гости',
             attributes: {
                 id='guests-quantity',
             }
@@ -15,20 +16,24 @@
             ]
         )}
 mixin quantity-dropdown(options)
-    .iqdropdown.field&attributes(options.attributes)
-        p.iqdropdown-selection
-        
-        .iqdropdown-menu
-            each item, i in options.items
-                .iqdropdown-menu-option(
-                    data-id= item.dataID
-                    data-mincount= item.minCount || 0
-                    data-maxcount= item.maxCount || 9
-                    data-defaultcount= item.defaultCount || item.minCount || 0
-                )
-                    div
-                        p.iqdropdown-item= item.title
+    label
+        if options.label
+            h3(class='field-label')=options.label
+
+        .iqdropdown.field&attributes(options.attributes)
+            p.iqdropdown-selection
             
-            .iqdropdown-menu-buttons
-                button(class="button-clear") очистить
-                button(class="button-apply") применить
+            .iqdropdown-menu
+                each item, i in options.items
+                    .iqdropdown-menu-option(
+                        data-id= item.dataID
+                        data-mincount= item.minCount || 0
+                        data-maxcount= item.maxCount || 9
+                        data-defaultcount= item.defaultCount || item.minCount || 0
+                    )
+                        div
+                            p.iqdropdown-item= item.title
+                
+                .iqdropdown-menu-buttons
+                    button(class="button-clear") очистить
+                    button(class="button-apply") применить
