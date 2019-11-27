@@ -1,0 +1,51 @@
+@import '../../theme/variables.scss';
+// i'm changing some of the properties, others are still set to their "!default" values
+
+$datepickerDayCellSize: 40px;
+$datepickerWidth: 320px;
+$datepickerPadding: 20px;
+
+$datepickerFontFamily: $font-content; // где-то монцератт, но где-то квиксанд!
+$datepickerFontSize: 12px;
+
+$datepickerTextColor: (
+  button: #5cc4ef,
+  otherMonth: rgba($color-shade, .25),
+  otherMonthInRange: #ccc,
+  disabled: rgba($color-shade, .25),
+  currentDate: $color-accent,
+  common: rgba($color-shade, .5),
+  dayNames: $color-primary,
+  navArrows: $color-primary
+);
+
+$datepickerBG: (
+  selected: $color-primary,
+  selectedHover: darken($color-primary, 5),
+  inRange: rgba($color-primary, .25),
+  hover: #f0f0f0
+) !default;
+
+$datepickerBorderColor: (
+  nav: transparent,
+  inline: rgba($color-shade, .25),
+  default: rgba($color-shade, .25)
+) !default;
+
+$datepickerNavigationHeight: 24px !default;
+$datepickerNavigationButtonsOffset: 2px !default;
+
+$datepickerPointerSize: 0px ;
+
+
+@import '../../../node_modules/air-datepicker/src/sass/datepicker.scss';
+@import '../../../node_modules/air-datepicker/src/sass/cell.scss';
+@import '../../../node_modules/air-datepicker/src/sass/navigation.scss';
+
+.datepicker {
+  box-sizing: border-box;
+  &--nav-title, &--nav-title i {
+    font: bold 19px/24px $font-title;
+    color: $color-shade;
+  }
+}

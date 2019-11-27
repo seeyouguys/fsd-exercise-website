@@ -1,0 +1,53 @@
+//- card with price calculation and "book" button
+
+    example: 
+        +booking-card({
+            formAttributes: { action: '#', method: 'post' },
+            roomNumber: 888,
+            daylyPrice: '9 990',
+            totalPrice: '38 081',
+            expenseItems: [
+                { label: '9 990₽ х 4 суток', price: '39 960' },
+                { label: 'Сбор за услуги: скидка 2 179₽', info: 'lorem ipsum', price: '0' },
+                { label: 'Сбор за дополнительные услуги', info: 'lorem ipsum', price: '300' }
+            ]
+        })
+
+include ../btn/btn
+include ../text-field/text-field
+include ../booking-duration/booking-duration
+include ../expense-item/expense-item
+
+mixin booking-card(options)
+
+    form.card.booking-card&attributes(options.formAttributes)
+
+        .room-info
+            span.room-number № #{ options.roomNumber }
+            span.room-price #{ options.daylyPrice }&#8381
+
+        +booking-duration()
+        
+        +quantity-dropdown({
+            label: 'Гости',
+            attributes: {
+                id: 'guests-quantity',
+            },
+            items: [
+                { title: 'взрослые', dataID:'adults', defaultCount: 2 },
+                { title: 'дети',     dataID:'children', minCount: 1 },
+                { title: 'младенцы', dataID:'infant', maxCount: 1}
+            ]
+        })
+
+        .booking-card__expenses
+            ul
+                each item in options.expenseItems
+                    +expense-item(item)    
+
+        .booking-card__total-price
+            span Итого
+            span.booking-card__price= options.totalPrice
+
+        .booking-card__button-submit
+            +btn({ text: 'Забронировать', href: '#', iconName: 'arrow_forward', class: 'btn_big' })

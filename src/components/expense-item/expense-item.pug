@@ -1,0 +1,11 @@
+//- a price list item (used in booking-card)
+
+    example:
+        +expense-item({ label: 'Услуга', info: 'Описание услуги', price: '9 990' })
+
+mixin expense-item(options)
+    li.expense-item
+        span.expense-item__label(class=options.info && 'expense-item__info-sign')= options.label
+
+        span.expense-item__price= options.price
+

@@ -105,7 +105,21 @@
     max-width: 1160px;
     display: grid;
     grid-template-columns: repeat(3, auto);
-    gap: 40px;
+    row-gap: 40px;
     justify-content: space-between;
     background-color: #E5E5E5;
 }
+
+// .cards {
+//     padding: 150px 20px 140px;
+//     margin: 0 auto;
+//     // max-width: 1160px;
+//     display: flex;
+//     flex-flow: row wrap;
+//     justify-content: space-around;
+//     background-color: #E5E5E5;
+// }
+
+// .cards > * {
+//     margin-bottom: 20px;
+// }

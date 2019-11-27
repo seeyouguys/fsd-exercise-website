@@ -1,7 +1,9 @@
 import './booking-duration.scss'
-
 // https://www.npmjs.com/package/air-datepicker
 import 'air-datepicker'
+import './datepicker-config2.scss'
+
+
 
 $(document).ready(() => {
     // date showing fields

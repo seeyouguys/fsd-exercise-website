@@ -1,0 +1,23 @@
+@import '../../theme/variables.scss';
+
+.expense-item {
+    // remove custom bullet
+    list-style: none;
+    &::before {
+        display: none;
+    }
+    min-height: 24px;
+    line-height: 18px;
+    display: flex;
+    justify-content: space-between;
+
+    &__label {
+        max-width: 214px;
+    }
+
+    // ₽
+    &__price::after {
+        content: '\20BD';
+        display: inline-block;
+    }
+}
