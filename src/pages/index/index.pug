@@ -5,20 +5,16 @@ extends ../../layouts/base-layout
 include ../../components/search-options-card/search-options-card
 include ../../components/booking-card/booking-card
 include ../../components/quantity-dropdown/quantity-dropdown
+include ../../components/rate-button/rate-button
 
 block variables
     - var title= "Toxin отель"
 
 block main
-    h1 booking-card 
-    +booking-card({
-        formAttributes: { action: '#', method: 'post' },
-        roomNumber: 888,
-        daylyPrice: '9 990',
-        totalPrice: '38 081',
-        expenseItems: [
-            { label: '9 990₽ х 4 суток', price: '39 960' },
-            { label: 'Сбор за услуги: скидка 2 179₽', info: 'lorem ipsum', price: '0' },
-            { label: 'Сбор за дополнительные услуги', info: 'lorem ipsum', price: '300' }
-        ]
-    })
+    h1 rate-button tests
+    +rate-button({ rating: 0 })
+    +rate-button({ rating: 1 })
+    +rate-button({ rating: 2 })
+    +rate-button({ rating: 3 })
+    +rate-button({ rating: 4 })
+    +rate-button({ rating: 5 })

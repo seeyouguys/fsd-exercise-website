@@ -10,6 +10,7 @@ include ../../components/toggle/toggle
 include ../../components/btn/btn
 include ../../components/expandable-list/expandable-list
 include ../../components/benefit/benefit
+include ../../components/rate-button/rate-button
 
 include ../../components/search-options-card/search-options-card
 include ../../components/login-card/login-card
@@ -117,7 +118,8 @@ block main
 
         section.rate-buttons
             h3 Rate button
-            p placeholder
+            +rate-button({ rating: 4 })
+            +rate-button({ rating: 5 })
         
         section.range-slider-section
             h3 Range slider
