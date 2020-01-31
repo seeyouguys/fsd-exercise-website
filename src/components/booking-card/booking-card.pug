@@ -17,14 +17,13 @@ include ../btn/btn
 include ../text-field/text-field
 include ../booking-duration/booking-duration
 include ../expense-item/expense-item
+include ../room-info/room-info
 
 mixin booking-card(options)
 
     form.card.booking-card&attributes(options.formAttributes)
 
-        .room-info
-            span.room-number № #{ options.roomNumber }
-            span.room-price #{ options.daylyPrice }&#8381
+        +room-info({ roomNumber: options.roomNumber, daylyPrice: options.daylyPrice })
 
         +booking-duration()
         

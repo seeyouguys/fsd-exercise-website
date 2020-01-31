@@ -1,0 +1,36 @@
+@import '../../theme/variables.scss';
+@import '../../styles/mixins.scss';
+
+.room {
+    &-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    &-number {
+        font: bold 24px/30px $font-title;
+        color: $color-shade;
+
+        &::after {
+            content: 'Люкс';
+            display: inline-block;
+            font: 12px/15px bold $font-content;
+            text-transform: lowercase;
+            @include text-color($color-gradient);
+        }
+    }
+
+    &-price {
+        font: bold 14px/18px $font-content;
+        color: rgba($color-shade, .5);
+
+        &::after {
+            content: 'в сутки';
+            display: inline-block;
+            font-weight: normal;
+            font-size: 12px;
+            margin-left: 7px;
+        }
+    }
+}

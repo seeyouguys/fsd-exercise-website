@@ -16,7 +16,7 @@ include ../../components/search-options-card/search-options-card
 include ../../components/login-card/login-card
 include ../../components/registration-card/registration-card
 include ../../components/booking-card/booking-card
-
+include ../../components/room-preview/room-preview
 
 
 block main
@@ -195,8 +195,18 @@ block main
                 +login-card({ formAttributes: { action: '#', method: 'post' } })
 
             section.room-preview
-                p room-preview placeholder
+                +room-preview({
+                    roomNumber: 888,
+                    daylyPrice: '9 990',
+                    rating: 5,
+                    commentsNumber: 145
+                })
             
             section.room-preview
-                p room-preview placeholder
+                +room-preview({
+                    roomNumber: 840,
+                    daylyPrice: '9 990',
+                    rating: 4,
+                    commentsNumber: 65
+                })
             

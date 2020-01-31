@@ -1,0 +1,7 @@
+//- component used in room-preview and booking-card
+
+mixin room-info(options)
+
+    .room-info(class= options.class || '')
+        span.room-number № #{ options.roomNumber }
+        span.room-price #{ options.daylyPrice }&#8381
