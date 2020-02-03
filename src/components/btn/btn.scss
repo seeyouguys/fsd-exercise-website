@@ -28,7 +28,7 @@
 
     // filled btn
     &_primary {
-        background: $color-gradient;
+        background: $gradient-primary;
         color: $color-bg;
 
         &:hover {
@@ -48,7 +48,7 @@
 
         // btn.btn_text.btn_text-primary
         &-primary {
-            @include text-color($color-gradient);
+            color: $color-primary;
         }
         &:hover {
             opacity: .5;
@@ -102,7 +102,7 @@
 
             transform: translateZ(-1px);
             
-            background: $color-gradient;
+            background: $gradient-primary;
             border-radius: 22px;
             
             position: absolute;

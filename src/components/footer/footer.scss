@@ -43,7 +43,7 @@
     line-height: 23px;
 }
 .footer__icon {
-    @include text-color($color-gradient);
+    @include text-color($gradient-primary);
     margin: 0 10px;
     text-decoration: none;
 }

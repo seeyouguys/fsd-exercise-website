@@ -2,5 +2,5 @@
 @import '../../styles/mixins.scss';
 
 .rate-button__star {
-    @include text-color($color-gradient);
+    @include text-color($gradient-primary);
 }

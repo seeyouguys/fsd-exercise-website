@@ -10,7 +10,7 @@
         outline: none;
         border: none;
         
-        @include text-color($color-gradient);
+        @include text-color($gradient-primary);
         position: absolute;
         left: calc(320px-44px);
 

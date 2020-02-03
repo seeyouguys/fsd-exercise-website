@@ -20,7 +20,7 @@
         float: left;
         margin-right: 10px;
         font-size: 48px;
-        @include text-color($color-gradient);
+        @include text-color($gradient-primary);
     }
     
     &__title {

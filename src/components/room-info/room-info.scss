@@ -17,7 +17,7 @@
             display: inline-block;
             font: 12px/15px bold $font-content;
             text-transform: lowercase;
-            @include text-color($color-gradient);
+            @include text-color($gradient-primary);
         }
     }
 

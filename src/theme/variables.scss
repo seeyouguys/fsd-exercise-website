@@ -15,4 +15,7 @@ $color-accent            : #6FCF97;
 // for different tones of the color use rgba($color-shade, .75/.50/.25/.05)
 $color-shade             : #1F2041;
 $color-bg                : #FFFFFF;
-$color-gradient          : linear-gradient(180deg, $color-primary 0%, #8BA4F9 100%);
+
+// Gradients
+$gradient-primary        : linear-gradient(180deg, $color-primary 0%, #8BA4F9 100%);
+$gradient-secondary      : linear-gradient(180deg, $color-accent 0%, #66D2EA 100%);
