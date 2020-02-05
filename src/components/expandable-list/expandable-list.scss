@@ -1,0 +1,41 @@
+// expandable-list
+// dropdown's header labeled to a hidden checkbox,
+// so depending on it's 'checked' state, content block is flipping 
+.exp-list {
+    &__label {
+        display: flex;
+        font: bold 12px/24px $font-content;
+        color: $color-shade;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+
+    &__icon {
+        user-select: none;
+        color: rgba($color-shade, .5);
+        transition: transform 100ms linear;
+        margin-left: 30px; 
+    }
+
+    &__checkbox {
+        display: none;
+
+        &:checked {
+            ~ .exp-list__content {
+                transform: rotateX(90deg);
+                height: 0;
+                min-height: 0;
+            }
+
+            ~ .exp-list__label .exp-list__icon {
+                transform: rotateX(180deg)
+            }
+        }
+    }
+    &__content {
+        position: relative;
+        min-height: 40px; // animation looks stupid w/o min-height
+        transition: transform 100ms ease-in, min-height 120ms ease-in;
+        transform-origin: top;
+    }
+}

@@ -1,0 +1,33 @@
+.text-field {
+    display: block;
+}
+
+.field {
+    width: 320px;
+    height: 44px;
+    padding: 0 15px;
+    box-sizing: border-box;
+
+    background: $color-bg;
+    border: 1px solid rgba($color-shade, .25);
+    border-radius: 4px;
+    transition: border 100ms linear;
+
+    font: 14px/24px $font-content;
+    color: rgba($color-shade, .75);
+    
+
+    &:hover, &:focus {
+        outline: none; // rm default chrome style for input:focus
+        border-color: rgba($color-shade, .5);
+    }
+
+    &::placeholder {
+        color: rgba($color-shade, .25);
+    }
+}
+
+.field-label {
+    margin: 0;
+    margin-bottom: 5px;
+}

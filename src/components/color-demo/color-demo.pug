@@ -1,0 +1,26 @@
+//- Filled rectangle w/ color name and color hex-code near it
+    
+    options.name - color's name
+    options.color - color's hex value
+    options.opacity - color sample's opacity
+    options.mix - string that would be mix in the classes of the component's root
+    
+    example:
+        +color-demo({ name: 'Dark Shade 75%', color: '#1F2041', opacity: '.75', mix: 'colors__item' })
+
+mixin color-demo(options)
+    if !options
+        - options = {}
+    - 
+        var classes = options.mix || ''
+        var color = {
+            'background-color': options.color,
+            'opacity': options.opacity || 1
+        }
+
+    .color-demo(class= classes)
+        .color-demo__sample(style= color)
+
+        .color-demo__info
+            h2.color-demo__name= options.name
+            span.color-demo__color= options.color

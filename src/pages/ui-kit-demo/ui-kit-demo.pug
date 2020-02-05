@@ -1,0 +1,36 @@
+extends ../../layouts/base-layout
+
+include ../../components/color-demo/color-demo
+
+
+block main
+
+    article.colors-and-fonts
+        .colors
+            +color-demo({ name: 'Dark Shade 100%', color: '#1F2041' })
+            +color-demo({ name: 'Dark Shade 75%', color: '#1F2041', opacity: '.75' })
+            +color-demo({ name: 'Dark Shade 50%', color: '#1F2041', opacity: '.50' })
+            +color-demo({ name: 'Dark Shade 25%', color: '#1F2041', opacity: '.25' })
+            +color-demo({ name: 'Dark Shade 5%', color: '#1F2041', opacity: '.05' })
+            +color-demo({ name: 'Purple', color: '#BC9CFF' })
+            +color-demo({ name: 'Green', color: '#6FCF97' })
+        
+        .fonts
+            h1.muted-text h1
+            h1.font-demo.
+                This one is the sub-section or
+                widget title
+            
+            h2.muted-text h2
+            h2.font-demo.
+                Next one is the item title inside
+                widgets
+            
+            h3.muted-text h3
+            h3.font-demo.
+                This is a label or CTA text
+            
+            p.muted-text body
+            p.font-demo.
+                This is the body text which is used for most
+                of the design, like paragraphs, lists, etc.

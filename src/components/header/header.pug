@@ -1,0 +1,42 @@
+//- navigation menu
+    menu_link is a default class that applies general styles, 
+    ${className}__link allows to mix in some block-specific styles (i.e. header-nav__link)
+
+    items is an array of {title:str, href:str, active:bool} objects 
+mixin menu(items, className='')
+    ul(class=`menu ${className}`)
+        each item in items
+            - var itemClass = `menu__link ${className}__link`
+            if item.active
+                - itemClass+= ` menu__link_active ${className}__link_active`
+            
+            li: a(href=item.href class=itemClass )= item.title
+
+//- +menu is deprecated now
+
+-
+    var menuItems = [
+        { title: 'home', href: '#', active: true },
+        { title: 'about us', href: '#' },
+        { title: 'services', href: '#' },
+        { title: 'careers', href: '#' },
+        { title: 'news', href: '#' },
+        { title: 'documentation', href: '#' }
+    ]
+
+mixin header(options)
+    header.header
+        .header-wrap
+            .header__section.header__logo
+                img(src="/assets/img/toxin-logo.svg", alt="Toxin logo")
+            
+            .header__section.header__nav
+                +menu(menuItems, 'header-nav')
+            
+            .header__section.header__profile
+                if !userName
+                    +btn('login')(href='#' class='btn_ghost btn_slim')
+                    +btn('register')(href='#' class='btn_primary btn_slim')
+                else
+                    span.username #{userName}
+                
