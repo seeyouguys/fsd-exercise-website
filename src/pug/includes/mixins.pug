@@ -1,6 +1,8 @@
 //- navigation menu
     menu_link is a default class that applies general styles, 
     ${className}__link allows to mix in some block-specific styles (i.e. header-nav__link)
+
+    items is an array of {title:str, href:str, active:bool} objects 
 mixin menu(items, className='')
     ul(class=`menu ${className}`)
         each item in items
@@ -17,3 +19,9 @@ mixin link-btn(title, href, className='')
             a(href=href, class=`btn ${className}`)= title
     else
         a(href=href, class=`btn ${className}`)= title
+
+//- font-awesome icon-stylized links. used in both footers
+mixin contact-links(className='')
+    a(href='#' class=`${className} fab fa-twitter`)
+    a(href='#' class=`${className} fab fa-facebook-square`)
+    a(href='#' class=`${className} fab fa-instagram`)

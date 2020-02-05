@@ -1,0 +1,49 @@
+footer.footer
+    .footer-wrap
+        .footer__section.footer__info
+            img.footer__logo(src="/assets/img/toxin-logo.svg", alt="Toxin logo")
+            | Lorem ipsum dolor sit amet consectetur adipiscing elit aliquam eget nullam pellentesque aliquam curabitur cociis.
+
+        .footer__section.footer__nav
+            -
+                var navLinks = [
+                    { title: 'about us', href: '#' },
+                    { title: 'news', href: '#' },
+                    { title: 'support', href: '#' },
+                    { title: 'products', href: '#' }
+                ]
+
+            h3 navigation
+            +menu(navLinks, 'footer-nav')
+        
+        .footer__section.footer__about
+            -
+                var aboutLinks = [
+                    { title: 'who we are', href: '#' },
+                    { title: 'our team', href: '#' },
+                    { title: 'careers', href: '#' },
+                    { title: 'investors', href: '#' }
+                ]
+
+            h3 about us
+            +menu(aboutLinks, 'footer-nav')
+        
+        .footer__section.footer__support
+            -
+                var supportLinks = [
+                    { title: 'documentation', href: '#' },
+                    { title: 'community', href: '#' },
+                    { title: 'get in touch', href: '#' }
+                ]
+            
+            h3 support
+            +menu(supportLinks, 'footer-nav')
+        .footer__section.footer__subscribe
+            h3 subscribe to our newsletter
+            p Receive our latest news and promotions in your inbox!
+
+            input#newsletter-email(type="email", name="subscribe")
+    .footer__copyright
+        .footer-wrap.footer-wrap_copyright
+            span Copyright © 2018 Toxin UI Kit. All rights reserved.
+            .footer__contact-links: +contact-links('footer__icon')
