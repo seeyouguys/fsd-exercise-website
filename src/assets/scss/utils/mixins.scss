@@ -14,9 +14,9 @@
   height: $height;
 }
 
-@mixin placeholder {
-  ::-webkit-input-placeholder {@content}
-  :-moz-placeholder           {@content}
-  ::-moz-placeholder          {@content}
-  :-ms-input-placeholder      {@content}
+// set gradient as a color for text/icon
+@mixin text-color($grad) {
+  background: $grad;
+  background-clip: text;
+  color: transparent;
 }

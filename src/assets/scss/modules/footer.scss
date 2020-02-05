@@ -47,11 +47,9 @@
     line-height: 23px;
 }
 .footer__icon {
-    background: $color-gradient;
-    background-clip: text;
+    @include text-color($color-gradient);
     margin: 0 10px;
     text-decoration: none;
-    color: transparent;
 }
 
 .footer-nav {

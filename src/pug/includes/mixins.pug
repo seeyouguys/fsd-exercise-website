@@ -12,16 +12,143 @@ mixin menu(items, className='')
             
             li: a(href=item.href class=itemClass )= item.title
 
-//- button-stylized link
-mixin link-btn(title, href, className='')
-    if className.includes('btn_ghost')
-        .btn-ghost-wrap
-            a(href=href, class=`btn ${className}`)= title
-    else
-        a(href=href, class=`btn ${className}`)= title
 
 //- font-awesome icon-stylized links. used in both footers
 mixin contact-links(className='')
     a(href='#' class=`${className} fab fa-twitter`)
     a(href='#' class=`${className} fab fa-facebook-square`)
     a(href='#' class=`${className} fab fa-instagram`)
+
+
+//- FORM ELEMENTS
+
+
+//- text field
+    
+    av. attributes: name, placeholder, value, class
+    see more: https://pugjs.org/language/mixins.html#mixin-attributes
+
+    usage: +text-field('Subscribe')(name="email", class="field_subscription")
+mixin text-field(label)
+    label.field-label
+        h3 #{label}
+        input(
+            class="field"
+            type="text"
+            id=`${attributes.name}-field`
+        )&attributes(attributes)
+
+//- subscribe form
+    text field with an arrow-stylised submit button
+
+    usage: +subscribe-form('subscription label')(method="get" action="#")
+mixin subscribe-form(label)
+    form&attributes(attributes).subscribe
+        +text-field(label)(name='email' placeholder='Email')
+        button(type="submit" class="material-icons subscribe__arrow-btn") arrow_forward
+
+
+//- btn or button-stylized link
+
+    class attribute is required, additional classes are allowed
+    renderds a button if btn_text class applied, or link otherwise
+    
+    usage:
+        +btn('click me')(href='#', class='btn_primary, another_style-class')
+        +btn('click me')(href='#', class='btn_ghost')
+        +btn('click me')(href='#', class='btn_text')
+mixin btn(label)
+    if attributes.class.includes('btn_text')
+        button.btn&attributes(attributes)= label
+    else
+        a.btn&attributes(attributes)= label
+                
+
+//- big-btn
+
+    wide (stratch to the parent's width) filled button-styled link with an icon
+
+    usage: +big-btn('click me', 'face')(href='#')
+mixin big-btn(label, iconName='arrow_forward')
+    a.btn.btn_primary.btn_big&attributes(attributes)
+        span= label
+        span.material-icons.btn__icon= iconName
+
+
+//- checkbox
+    becomes checkbox_rich if optional block of content provided
+    becomes toggle if 'isToggle' attribute is provided
+
+    usage: 
+        +checkbox('Можно курить')(name='isSmokingAllowed' id='smoking-field')
+        +checkbox('Широкий коридор')(name='wideCorridor' id='corridor-field' checked)
+            | Ширина коридоров в номере не менее 91 см.
+        +checkbox('Получать спецпредложения', 'toggle')(name="get-offers" checked)
+mixin checkbox(label, isToggle)
+    label.checkbox-container
+
+        input.checkbox(type="checkbox")&attributes(attributes)
+        if isToggle
+            div.toggle
+        else 
+            div.checkbox-custom
+
+        .checkbox-label-wrap
+            span(class=`checkbox-label ${block ? 'checkbox-label_rich' : ''}`)
+                | #{label}
+            if block
+                p.checkbox-info: block
+
+
+//- radio-btns
+    a group of radio buttons
+
+    usage:
+        +radio-group([
+            { label: 'Мужчина', value: "male", checked: true },
+            { label: 'Женщина', value: "female" }
+        ])(name="gender")
+mixin radio-group(items)
+    each item in items
+        label.radio-container
+
+            input.radio(type="radio" name=attributes.name)&attributes(item)
+            div.radio-custom
+            
+            .radio-label-wrap
+                span.radio-label #{item.label}
+
+
+//- expandable-list
+    css-only dropdown for checkboxes:
+    dropdown's header labeled to a hidden checkbox,
+    so depending on it's 'checked' state, content block is flipping 
+
+    id must be provided if there is more than one exp-list on the page
+
+    +expandable-list('expandable checkbox list', 'hidden')(id='meals')
+        +checkbox('Завтрак')(name='breakfast')
+        +checkbox('Обед')(name='dinner')
+mixin expandable-list(label, isHidden)
+    input(type="checkbox" checked=isHidden id=attributes.id).exp-list__checkbox
+    
+    label(for=attributes.id).exp-list__label
+        span #{label}
+        span.material-icons.exp-list__icon expand_less
+        
+    .exp-list__content
+        block
+
+
+
+//-  MISC
+
+//- benefit
+    short phrase w/ info and icon from material-icons
+
+    usage: +benefit('Комфорт', 'Шумопоглощающие стены', 'insert_emoticon')
+mixin benefit(title, info, iconName)
+    .benefit-wrap
+        span.material-icons.benefit__icon #{iconName}
+        strong.benefit__title #{title}
+        p.benefit__info #{info}

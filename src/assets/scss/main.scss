@@ -1,6 +1,6 @@
 @import "utils/libs";
 @import "utils/vars";
-// @import "utils/mixins";
+@import "utils/mixins";
 @import "utils/fonts";
 
 body {
@@ -26,5 +26,6 @@ h3 {
 // Modules
 @import 'modules/header.scss';
 @import 'modules/menu.scss';
-@import 'modules/btn.scss';
+@import 'modules/form-elements.scss';
 @import 'modules/footer.scss';
+@import 'modules/misc.scss';

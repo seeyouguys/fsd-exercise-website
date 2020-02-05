@@ -1,0 +1,36 @@
+// benefit
+.benefit {
+    &-wrap {
+        width: 280px;
+        // display: flex;
+
+        font: 14px/24px $font-content;
+
+        &::after {
+            content: '';
+            display: block;
+            height: 1px;
+            width: 100%;
+            background-color: rgba($color-shade, .1);
+            margin: 20px 0;
+        }
+    }
+    
+    &__icon {
+        float: left;
+        margin-right: 10px;
+        font-size: 48px;
+        @include text-color($color-gradient);
+    }
+    
+    &__title {
+        font-weight: bold;
+    }
+
+    &__info {
+        padding: 0;
+        margin: 0;
+    }
+
+    
+}
