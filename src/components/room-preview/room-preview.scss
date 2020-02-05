@@ -1,0 +1,30 @@
+@import '../../theme/variables.scss';
+@import 'bx-slider-config.scss';
+
+.room-preview {
+    width: 270px;
+    height: 257px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0px 10px 20px rgba($color-shade, .05);
+    background: $color-bg;
+    
+    &__brief {
+        padding: 20px;
+    }
+
+    &__info {
+        border-bottom: 1px solid rgba($color-shade, .1);
+        padding-bottom: 10px;
+        margin-bottom: 8px;
+    }
+
+    &__feedback {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__image-slider {
+        background-color: $color-primary;
+    }
+}

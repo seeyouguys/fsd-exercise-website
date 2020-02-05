@@ -1,0 +1,30 @@
+//- two inputs with a calendar widget showng the chosen date range
+    powered via air-datepicker plugin
+
+    example:
+        +booking-duration()
+
+mixin booking-duration()
+    #datepicker.booking-duration
+
+        +text-field({ 
+            label: 'Прибытие',
+            attributes: {
+                name: "arrival-date",
+                id: "arrival-date",
+                placeholder: "ДД.ММ.ГГГГ",
+                readonly: true,
+                class: "datepicker-here",
+            }
+        })
+
+        +text-field({ 
+            label: 'Выезд',
+            attributes: {
+                name: "departure-date",
+                id: "departure-date",
+                placeholder: "ДД.ММ.ГГГГ",
+                readonly: true,
+                tabindex: -1
+            }
+        })

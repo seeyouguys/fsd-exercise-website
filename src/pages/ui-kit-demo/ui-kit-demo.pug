@@ -2,6 +2,22 @@ extends ../../layouts/base-layout
 
 include ../../components/color-demo/color-demo
 
+include ../../components/text-field/text-field
+include ../../components/quantity-dropdown/quantity-dropdown
+include ../../components/checkbox/checkbox
+include ../../components/radio-group/radio-group
+include ../../components/toggle/toggle
+include ../../components/btn/btn
+include ../../components/expandable-list/expandable-list
+include ../../components/benefit/benefit
+include ../../components/rate-button/rate-button
+
+include ../../components/search-options-card/search-options-card
+include ../../components/login-card/login-card
+include ../../components/registration-card/registration-card
+include ../../components/booking-card/booking-card
+include ../../components/room-preview/room-preview
+
 
 block main
 
@@ -34,3 +50,163 @@ block main
             p.font-demo.
                 This is the body text which is used for most
                 of the design, like paragraphs, lists, etc.
+
+    article.form-elements
+        section.text-fields
+            +text-field({ 
+                    label: 'Text field',
+                    attributes: {
+                        name: "email", 
+                        type: "email", 
+                        placeholder: "Email"
+                    }
+                })
+        
+        section.masked-text-fields
+            +text-field({ 
+                    label: 'Masked text field',
+                    attributes: {
+                        name: "date", 
+                        type: "text", 
+                        placeholder: "ДД.ММ.ГГГГ", 
+                        'data-mask': '00/00/0000'
+                    }
+                })
+
+        section.dropdowns
+            +quantity-dropdown({
+                label: 'Dropdown',
+                attributes: {
+                    id: 'guests-quantity',
+                },
+                items: [
+                    { title: 'взрослые', dataID:'adults', defaultCount: 2 },
+                    { title: 'дети',     dataID:'children', minCount: 1 },
+                    { title: 'младенцы', dataID:'infant', maxCount: 1}
+                ]
+            })
+
+        section.checkboxes
+            h3 Checkbox buttons
+            +checkbox({label: 'Можно курить' })
+            +checkbox({label: 'Можно с питомцами', attributes: {checked: true}})
+            +checkbox({label: 'Можно пригласить гостей (до 10 человек)', attributes: {checked: true}})
+
+        section.radio-btns
+            h3 Radio buttons
+            .radio-group
+                +radio-group({
+                    name: 'gender',
+                    items: [
+                        { label: 'Мужчина', value: "male", checked: true },
+                        { label: 'Женщина', value: "female" }
+                    ]
+                })
+        
+        section.toggles
+            h3 Toggle
+            +toggle({
+                label: 'Получать спецпредложения',
+                attributes: { name: 'specialOffers', checked: true },
+                mix: 'toggles__item'
+            })
+            +toggle({ label: 'Получать спецпредложения', mix: 'toggles__item' })
+
+        section.like-buttons
+            h3 Like button
+            p placeholder
+
+        section.rate-buttons
+            h3 Rate button
+            +rate-button({ rating: 4 })
+            +rate-button({ rating: 5 })
+        
+        section.range-slider-section
+            h3 Range slider
+            p placeholder
+        
+        section.buttons
+            h3 Buttons
+            +btn({ text: 'click me', href: '#', class: 'btn_primary' })
+            +btn({ text: 'click me', href: '#', class: 'btn_ghost' })
+            +btn({ text: 'click me', href: '#', class: 'btn_text btn_text-primary'})
+            +btn({ text: 'click me', href: '#', class: 'btn_text btn_text-secondary'})
+            +btn({ text: 'Перейти к оплате', href: '#', class: 'btn_big'})
+
+        section.pagination-section
+            h3 Pagination
+            p placeholder
+        
+        section.exp-checkbox-list-section
+            +expandable-list({ label: 'expandable checkbox list', isHidden: false, attributes: {id: 'meals'} })
+                +checkbox({ label: 'Завтрак', attributes: { name: 'breakfast' } })
+                +checkbox({ label: 'Стул для кормления', attributes: { name: 'chair', checked: true } })
+                +checkbox({ label: 'Кроватка', attributes: { name: 'crib', checked: true } })
+                +checkbox({ label: 'Телевизор', attributes: { name: 'television', checked: true } })
+                +checkbox({ label: 'Шампунь', attributes: { name: 'shampoo' } })
+                +checkbox({ label: 'Телевизор', attributes: { name: 'television' } })
+                +checkbox({ label: 'Шампунь', attributes: { name: 'shampoo' } })
+
+        
+        section.rich-checkboxes
+            h3 Rich checkbox buttons
+            +checkbox({ label: 'Широкий коридор', attributes: { name: 'wideCorridor' } })
+                | Ширина коридоров в номере не менее 91 см.
+            +checkbox({ label: 'Помощник для инвалидов', attributes: { name: 'disabledAssistance' } })
+                | На 1 этаже вас встретит специалист  и проводит до номера.
+            
+        
+        section.bullet-list-section
+            h3 Bullet list
+            ul
+                li Нельзя с питомцами
+                li Без вечеринок и мероприятий
+                li Время прибытия — после 13:00, а выезд до 12:00
+
+        section.benefits
+            +benefit({ title: 'Комфорт', info: 'Шумопоглощающие стены', iconName: 'insert_emoticon'})
+            +benefit({ title: 'Удобство', info: 'Окно в каждой из спален', iconName: 'location_city'})
+
+        section.comments-section
+            p comment placeholder
+
+    .cards-bg
+        article.cards
+            section.search-room
+                +search-options-card({ formAttributes: { action: '#', method: 'get' }})
+            
+            section.booking
+                +booking-card({
+                    formAttributes: { action: '#', method: 'post' },
+                    roomNumber: 888,
+                    daylyPrice: '9 990',
+                    totalPrice: '38 081',
+                    expenseItems: [
+                        { label: '9 990₽ х 4 суток', price: '39 960' },
+                        { label: 'Сбор за услуги: скидка 2 179₽', info: 'lorem ipsum', price: '0' },
+                        { label: 'Сбор за дополнительные услуги', info: 'lorem ipsum', price: '300' }
+                    ]
+                })
+            
+            section.registration
+                +registration-card({ formAttributes: { action: '#', method: 'post' } })
+            
+            section.login
+                +login-card({ formAttributes: { action: '#', method: 'post' } })
+
+            section.room-preview
+                +room-preview({
+                    roomNumber: 888,
+                    daylyPrice: '9 990',
+                    rating: 5,
+                    commentsNumber: 145
+                })
+            
+            section.room-preview
+                +room-preview({
+                    roomNumber: 840,
+                    daylyPrice: '9 990',
+                    rating: 4,
+                    commentsNumber: 65
+                })
+            

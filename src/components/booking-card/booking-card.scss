@@ -1,0 +1,61 @@
+@import '../../theme/variables.scss';
+@import '../../styles/mixins.scss';
+
+.card {
+    width: 380px;
+    padding: 29px;
+    padding-top: 39px; 
+
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+    
+    background: $color-bg;
+
+    display: grid;
+    grid-auto-flow: row;
+    grid-row-gap: 20px;
+    
+    &__fields {
+        display: grid;
+        grid-auto-flow: row;
+        row-gap: 10px;
+    }
+
+    &__header {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.booking-card {
+    &__expenses {
+        margin-top: 1px;
+    }
+
+    &__total-price {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        font: bold 19px/24px $font-title;
+        color: $color-shade;
+
+        &::after {
+            content: '';
+            width: 180px;
+            // flex-grow: 1; 
+            height: 19px;
+            border-bottom: 1px dotted rgba($color-shade, .25);
+        }
+    }
+
+    &__price {
+        order: 1; // should go after the pseudoelement w/ a border
+        // ₽
+        &::after {
+            content: '\20BD';
+            display: inline-block;
+        }
+    }
+}

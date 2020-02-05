@@ -18,13 +18,13 @@ mixin btn(options)
     //- btn_text should be a true button, not a link
     if options.class.includes('btn_text')
         button(
-            class= 'btn btn_text',
+            class= 'btn ' + options.class,
             href= options.href,
             id= options.id
         )= options.text
     
     //- big_btn displays as a block and comes with an icon
-    if options.class.includes('btn_big')
+    else if options.class.includes('btn_big')
         button(
             class= 'btn btn_primary btn_big ',
             href= options.href,

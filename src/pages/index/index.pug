@@ -1,13 +1,22 @@
 extends ../../layouts/base-layout
     
 
-//- include ../../components/login-form/login-form
+//- include ../../components/login-card/login-card
+include ../../components/booking-card/booking-card
 
 block variables
     - var title= "Toxin отель"
 
 block main
-    ul.bullet-list
-        li test
-        li да
-    
+    h1 styling the calendar
+    +booking-card({
+        formAttributes: { action: '#', method: 'post' },
+        roomNumber: 888,
+        daylyPrice: '9 990',
+        totalPrice: '38 081',
+        expenseItems: [
+            { label: '9 990₽ х 4 суток', price: '39 960' },
+            { label: 'Сбор за услуги: скидка 2 179₽', info: 'lorem ipsum', price: '0' },
+            { label: 'Сбор за дополнительные услуги', info: 'lorem ipsum', price: '300' }
+        ]
+    })

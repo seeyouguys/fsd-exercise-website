@@ -1,0 +1,85 @@
+//- contains registration form with a bunch of fields
+
+    example: 
+        +registration-card({ formAttributes: { action: '#', method: 'post' } })
+
+include ../btn/btn
+include ../text-field/text-field
+include ../checkbox/checkbox
+include ../toggle/toggle
+
+mixin registration-card({ formAttributes })
+    form.card.registration-card&attributes(formAttributes)
+        h1.card__header Регистрация аккаунта
+
+        .card__fields
+            +text-field({ 
+                label: null,
+                mix: 'card__field',
+                attributes: {
+                    name: 'firstName', 
+                    type: 'text', 
+                    placeholder: 'Имя'
+                }
+            })
+            +text-field({ 
+                label: null,
+                mix: 'card__field',
+                attributes: {
+                    name: 'secondName', 
+                    type: 'text', 
+                    placeholder: 'Фамилия'
+                }
+            })
+        
+            .registration-card__radio
+                +radio-group({
+                    name: 'gender',
+                    items: [
+                        { label: 'Мужчина', value: 'male', checked: true },
+                        { label: 'Женщина', value: 'female' }
+                    ]
+                })
+
+        .card__fields
+            +text-field({ 
+                label: 'Дата рождения',
+                mix: 'card__field',
+                attributes: {
+                    placeholder: 'ДД.ММ.ГГГГ', 
+                    'data-mask': '00.00.0000'
+                }
+            })
+
+        .card__fields
+            +text-field({ 
+                label: 'Данные для входа в сервис',
+                mix: 'card__field',
+                attributes: {
+                    name: 'email', 
+                    type: 'email', 
+                    placeholder: 'Email'
+                }
+            })
+
+            +text-field({ 
+                label: null,
+                mix: 'card__field',
+                attributes: {
+                    name: 'password', 
+                    type: 'password', 
+                    placeholder: 'Пароль'
+                }
+            })
+
+            +toggle({
+                label: 'Получать спецпредложения',
+                attributes: { name: 'specialOffers', checked: false },
+            })
+
+        .registration-card__submit-btn
+            +btn({ text: 'Перейти к оплате', href: '#', iconName: 'arrow_forward', class: 'btn_big' })
+        
+        .registration-card__have-acc-section
+            span.registration-card__have-acc-text Уже есть аккаунт на Toxin?
+            +btn({ text: 'Войти', href: '#', class: 'btn_ghost' })

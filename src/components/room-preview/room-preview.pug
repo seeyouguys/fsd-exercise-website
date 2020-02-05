@@ -1,0 +1,30 @@
+//- card w/ slider and room info: number, price, rating
+
+    example: 
+        +room-preview({
+            roomNumber: 888,
+            daylyPrice: '9 990',
+            rating: 5,
+            commentsNumber: 145
+        })
+
+//- TODO: 
+//-     slider img urls should be provided as an object/array among other parameters;
+//-     card isn't pixel-perefct due to the incorrect fonts
+
+include ../rate-button/rate-button
+include ../room-info/room-info
+
+mixin room-preview({ roomNumber, daylyPrice, rating, commentsNumber })
+    .room-preview
+        .room-preview__image-slider.bxslider
+            .bx-item 1
+            .bx-item 2
+            .bx-item 3
+            .bx-item 4
+
+        .room-preview__brief
+            +room-info({ roomNumber, daylyPrice, class: 'room-preview__info' })
+            .room-preview__feedback
+                +rate-button({ rating })
+                span.room-preview__comments-number= commentsNumber + ' Отзывов'

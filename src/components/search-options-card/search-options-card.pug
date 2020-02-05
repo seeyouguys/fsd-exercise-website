@@ -1,0 +1,32 @@
+//- contains form with a bunch of fields for filtering
+
+    example: 
+        +search-options-card({ formAttributes: { action: '#', method: 'post' })
+include ../btn/btn
+
+//- TODO: replace it with a dropdown menu when it will be ready,
+    text field serves only as a placeholder for dropdown
+include ../text-field/text-field
+include ../booking-duration/booking-duration
+include ../quantity-dropdown/quantity-dropdown
+
+mixin search-options-card({ formAttributes })
+    form.card.search-options-card&attributes(formAttributes)
+        h1.card__header Найдём номера под ваши пожелания
+        .card-fields
+            +booking-duration()
+        
+        
+        +quantity-dropdown({
+            attributes: {
+                id: 'guests-quantity',
+            },
+            items: [
+                { title: 'взрослые', dataID:'adults', defaultCount: 2 },
+                { title: 'дети',     dataID:'children', minCount: 1 },
+                { title: 'младенцы', dataID:'infant', maxCount: 1}
+            ]
+        })
+        
+        .search-options-card__submit-btn
+            +btn({ text: 'Подобрать номер', href: '#', iconName: 'arrow_forward', class: 'btn_big' })

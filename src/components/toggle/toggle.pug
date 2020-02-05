@@ -1,0 +1,20 @@
+//- toggle
+    toggle-styled checkbox
+    
+    options.label: title near the toggle
+    options.mix - string that would be mixed in the classes of the component's root
+    options.attributes - any checkbox attributes like id, placeholder, checked, etc
+
+    example:
+        +toggle({ label: 'Get special offers', attributes: { name: 'specialOffers', checked: true } })
+
+mixin toggle(options)
+    if !options
+        - options = {}
+
+    label.toggle(class= options.mix)
+
+        input.checkbox-default(type="checkbox")&attributes(options.attributes)
+        div.toggle-custom
+
+        span.toggle-label= options.label

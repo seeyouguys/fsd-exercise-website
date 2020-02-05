@@ -45,6 +45,82 @@
 //
 
 .form-elements {
-    background-color: $color-bg;
-    padding: 140px;
+    padding: 140px 20px;
+    margin: 0 auto;
+    max-width: 1160px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(236px, 320px));
+    gap: 40px;
+    justify-content: space-between;
 }
+
+.checkboxes {
+    display: grid;
+    row-gap: 10px;
+    max-width: 236px;
+}
+
+.rich-checkboxes {
+    display: grid;
+    row-gap: 10px;
+}
+
+.radio-group {
+    display: flex;
+}
+
+.toggles {
+    display: flex;
+    flex-direction: column;
+
+    &__item {
+        margin-bottom: 14px;
+    }
+}
+
+.buttons {
+    display: grid;
+    justify-items: left;
+    gap: 30px;
+}
+
+.exp-list__content {
+    display: grid;
+    grid-auto-flow: row;
+    row-gap: 10px;
+    margin-top: 13px;
+}
+
+//
+// Cards
+//
+
+.cards-bg {
+    background-color: #E5E5E5;
+}
+
+.cards {
+    padding: 150px 20px 140px;
+    margin: 0 auto;
+    max-width: 1160px;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    row-gap: 40px;
+    justify-content: space-between;
+    background-color: #E5E5E5;
+}
+
+// arranging same cards w/ the flexbox
+// .cards {
+//     padding: 150px 20px 140px;
+//     margin: 0 auto;
+//     // max-width: 1160px;
+//     display: flex;
+//     flex-flow: row wrap;
+//     justify-content: space-around;
+//     background-color: #E5E5E5;
+// }
+
+// .cards > * {
+//     margin-bottom: 20px;
+// }

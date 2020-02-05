@@ -1,30 +1,41 @@
 //- text field
     
-    options: {
-        label: "title above the field"
-        name: "input's name attribute"
-        class: "aditional classes"
-    }
-    ...and any other default input's attributes like id, placeholder, value, etc
+    options.label: title above the field
+    options.mix - string that would be mixed in the classes of the component's root
+    options.attributes - any input's attributes like id, placeholder, value, etc
 
     example:
         +text-field({ 
                 label: null,
-                name: "email", 
-                placeholder: "Email", 
-                type: "email", 
-                class: "login-form__field" 
+                mix: "login-card__field",
+                attributes: {
+                    name: "email", 
+                    type: "email", 
+                    placeholder: "Email"
+                }
             })
+    
+    for masking use jquery-mask-plugin
+    docs: https://igorescobar.github.io/jQuery-Mask-Plugin/docs.html
+    TLDR: use data-mask="00/00/0000" (or whatever other mask) as the attribute of the input
+        attributes: {
+            placeholder: "DD.MM.YYYY", 
+            'data-mask': '00/00/0000'
+        }
 
 mixin text-field(options)
-    label(class= 'text-field ' + options.class)
+
+    if !options
+        - options = {}
+    
+    - var classes = 'text-field ' + (options.mix || '')
+
+    label(class= classes)
     
         if options.label
             h3.field-label= options.label
 
-        - delete options.class
-        - delete options.label
         input(
             class= "field"
             type= "text"
-        )&attributes(options)
+        )&attributes(options.attributes)
