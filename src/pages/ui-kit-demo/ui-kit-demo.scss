@@ -1,4 +1,4 @@
-@import '../../theme/variables.scss';
+@import '../../theme/utils/variables.scss';
 
 .demo-block {
     min-height: 100vh;
@@ -20,6 +20,7 @@
 
 .colors {
     display: grid;
+    grid-auto-rows: max-content;
     row-gap: 20px;
 }
 
