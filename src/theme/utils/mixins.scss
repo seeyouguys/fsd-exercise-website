@@ -1,0 +1,19 @@
+@import '../../theme/utils/variables.scss';
+
+// px to rem
+@function rem($pixels, $context: $mainFontSize) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+  @return $pixels / $context * 1rem;
+}
+
+// set gradient as a color for text/icon
+@mixin text-color($grad) {
+  background: $grad;
+  background-clip: text;
+  color: transparent;
+}

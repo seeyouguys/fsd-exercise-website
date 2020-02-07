@@ -1,34 +1,38 @@
-@import './fonts';
-@import './variables';
+@import './utils/fonts';
+@import './utils/variables';
+@import './utils/mixins';
 
 html {
-  font-size: 8px;
+  font-size: $mainFontSize;
 }
 
 body, html {
-  height: 100%;
   margin: 0;
   padding: 0;
 }
 
 body {
   color: rgba($color-shade, .75);
-  font: normal 1.75rem/3rem $font-content;
+  font: normal rem(14px) $font-content;
+  line-height: rem(24px);
   background-color: #fff;
 }
 
 h1 {
-  font: bold 3rem/3.75rem $font-title;
+  font: bold rem(24px) $font-title;
+  line-height: rem(30px);
   color: $color-shade;
 }
 
 h2 {
-  font: bold 2.375rem/3rem $font-title;
+  font: bold rem(19px) $font-title;
+  line-height: rem(24px);
   color: $color-shade;
 }
 
 h3 {
-  font: bold 1.5rem/1.875rem $font-content;
+  font: bold rem(12px) $font-content;
+  line-height: rem(15px);
   color: $color-shade;
   text-transform: uppercase;
 }
@@ -39,11 +43,12 @@ ul {
   padding: 0;
   margin: 0;
 
-  font: 1.75rem/3rem $font-content;
+  font: rem(14px) $font-content;
+  line-height: rem(24px);
   color: rgba($color-shade, .75);
 
   & li {
-      margin-bottom: 1.25rem;
+      margin-bottom: rem(10px);
 
       &:last-child {
           margin-bottom: 0;
@@ -52,9 +57,9 @@ ul {
       &::before {
           content: '';
           display: inline-block;
-          width: 1.25rem;
-          height: 1.25rem;
-          margin-right: 1.375rem;
+          width: rem(10px);
+          height: rem(10px);
+          margin-right: rem(11px);
           border-radius: 100%;
           background-color: rgba($color-shade, .25);
       }
