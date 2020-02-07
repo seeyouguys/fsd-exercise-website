@@ -3,15 +3,19 @@
 .color-demo {
     display: flex;
     align-items: center;
-}
 
-.color-demo__sample {
-    width: 70px;
-    height: 70px;
-    margin-right: 40px;
-    border-radius: 6px;
-}
+    &__sample {
+        width: 8.75rem;
+        height: 8.75rem;
+        border-radius: 6px;
+        margin-right: 5rem;
+    }
+    
+    &__name {
+        margin: 0;
+    }
 
-.color-demo__name {
-    margin: 0;
+    &__hex {
+        margin: 0;
+    }
 }

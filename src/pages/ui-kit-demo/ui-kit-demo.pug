@@ -21,15 +21,15 @@ include ../../components/room-preview/room-preview
 
 block main
 
-    article.colors-and-fonts
+    article.demo-block.colors-and-fonts
         .colors
-            +color-demo({ name: 'Dark Shade 100%', color: '#1F2041' })
-            +color-demo({ name: 'Dark Shade 75%', color: '#1F2041', opacity: '.75' })
-            +color-demo({ name: 'Dark Shade 50%', color: '#1F2041', opacity: '.50' })
-            +color-demo({ name: 'Dark Shade 25%', color: '#1F2041', opacity: '.25' })
-            +color-demo({ name: 'Dark Shade 5%', color: '#1F2041', opacity: '.05' })
-            +color-demo({ name: 'Purple', color: '#BC9CFF' })
-            +color-demo({ name: 'Green', color: '#6FCF97' })
+            +color-demo({ name: 'Dark Shade 100%', hex: '#1F2041' })
+            +color-demo({ name: 'Dark Shade 75%', hex: '#1F2041', opacity: '.75' })
+            +color-demo({ name: 'Dark Shade 50%', hex: '#1F2041', opacity: '.50' })
+            +color-demo({ name: 'Dark Shade 25%', hex: '#1F2041', opacity: '.25' })
+            +color-demo({ name: 'Dark Shade 5%', hex: '#1F2041', opacity: '.05' })
+            +color-demo({ name: 'Purple', hex: '#BC9CFF' })
+            +color-demo({ name: 'Green', hex: '#6FCF97' })
         
         .fonts
             h1.muted-text h1
@@ -171,7 +171,7 @@ block main
             p comment placeholder
 
     .cards-bg
-        article.cards
+        article.demo-block.cards
             section.search-room
                 +search-options-card({ formAttributes: { action: '#', method: 'get' }})
             

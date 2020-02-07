@@ -1,11 +1,17 @@
 @import '../../theme/variables.scss';
+
+.demo-block {
+    min-height: 100vh;
+    background-color: $color-bg;
+    // here should be a pseudoelement with logo.svg
+}
+
 // 
 // Colors and fonts
 //
 
 .colors-and-fonts {
     padding: 145px 150px;
-    background-color: $color-bg;
 
     display: flex;
     justify-content: space-between;
@@ -18,7 +24,9 @@
 }
 
 .fonts {
+    margin-right: 37px;
     display: grid;
+    grid-auto-rows: max-content;
     grid-template-columns: 40px 340px;
     column-gap: 30px;
     row-gap: 50px;
