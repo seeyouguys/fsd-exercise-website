@@ -1,10 +1,11 @@
 @import '../../theme/utils/variables.scss';
+@import '../../theme/utils/mixins.scss';
 
 // hide default and create custom checkbox,
 // checkmark is just two rectangles one overlayering the other
 .checkbox {
     display: flex;
-    line-height: 18px;
+    line-height: rem(18px);
 
     // hide the browser's default checkbox
     &-default {
@@ -31,11 +32,11 @@
    // label, it's text and optional info block
    &-label {
        color: rgba($color-shade, .5);
-       margin-left: 10px;
+       margin-left: rem(10px);
 
        &__text {
-           font-size: 14px;
-           line-height: 20px;
+           font-size: rem(14px);
+           line-height: rem(20px);
 
            &_rich {
                color: rgba($color-shade, .75);
@@ -44,18 +45,19 @@
        }
 
        &__info {
-           font: 12px/14px $font-content;
+           font: rem(12px) $font-content;
+           line-height: rem(14px);
            color: rgba($color-shade, .5);
-           margin: 5px 0 0 0;
+           margin: rem(5px) 0 0 0;
        }
    }
 
    // custom checkbox
    &-custom { 
        position: relative;
-       min-width: 20px;
-       width: 20px;
-       height: 20px;
+       min-width: rem(20px);
+       width: rem(20px);
+       height: rem(20px);
        background-color: $color-bg;
        
        box-sizing: border-box;
@@ -69,20 +71,19 @@
        display: block;
        background-color: $color-bg;
        
-       width: 6px;
-       height: 8px;
+       width: rem(6px);
+       height: rem(8px);
        transform: rotate(45deg);
 
-       // values were picked up empirically
+       // dunno how to place it w/o position:absolute
        position: absolute;
-       top: 0.5px; // it needs to be a little bit higher
-       left: 5.5px;
+       top: rem(0.5px); // it needs to be a little bit higher then ::before
+       left: rem(5.5px);
    }
    // checkmark (gradient rectangle)
    &-custom::before {
        display: none;
-       top: 3.5px; 
+       top: rem(3.5px); 
        background: $gradient-primary;
    }
 }
-

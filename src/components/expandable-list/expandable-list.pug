@@ -5,9 +5,14 @@
 
     id must be provided if there is more than one exp-list on the page
 
+    options.label - title of the expandable list
+    options.isHidden - should it be hidden by default
+    options.attributes - any input's attributes like id, name, etc
+
     +expandable-list(label: 'expandable checkbox list', isHidden: true, attributes: {id='meals'}')
         +checkbox({ label: 'Завтрак', attributes: { name='breakfast' } })
         +checkbox({ label: 'Обед', attributes: { name='dinner' } })
+
 mixin expandable-list(options)
     input(type="checkbox" checked=options.isHidden id=options.attributes.id).exp-list__checkbox
     

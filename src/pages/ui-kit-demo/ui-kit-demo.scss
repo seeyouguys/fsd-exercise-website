@@ -1,9 +1,16 @@
 @import '../../theme/utils/variables.scss';
+@import '../../theme/utils/mixins.scss';
 
 .demo-block {
     min-height: 100vh;
     background-color: $color-bg;
     // here should be a pseudoelement with logo.svg
+}
+
+.section-header {
+    margin: 0;
+    padding: 0;
+    margin-bottom: rem(6px);
 }
 
 // 
@@ -72,6 +79,8 @@
 .rich-checkboxes {
     display: grid;
     row-gap: 10px;
+    max-width: 255px;
+    grid-auto-rows: max-content;
 }
 
 .radio-group {
