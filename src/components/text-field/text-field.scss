@@ -1,4 +1,5 @@
 @import '../../theme/utils/variables.scss';
+@import '../../theme/utils/mixins.scss';
 
 .text-field {
     display: block;
@@ -6,8 +7,8 @@
 
 .field {
     width: 100%;
-    height: 44px;
-    padding: 0 15px;
+    height: rem(44px);
+    padding: 0 rem(15px);
     box-sizing: border-box;
 
     background: $color-bg;
@@ -15,7 +16,8 @@
     border-radius: 4px;
     transition: border 100ms linear;
 
-    font: 14px/24px $font-content;
+    font: rem(14px) $font-content;
+    line-height: rem(24px);
     color: rgba($color-shade, .75);
     
 
@@ -31,5 +33,5 @@
 
 .field-label {
     margin: 0;
-    margin-bottom: 5px;
+    margin-bottom: rem(5px);
 }
