@@ -1,58 +1,67 @@
 @import '../../theme/utils/variables.scss';
+@import '../../theme/utils/mixins.scss';
 
-// radio-group item
+// radio-group wrapper
 .radio {
     display: inline-flex;
-    margin-right: 20px;
-    line-height: 20px;
-    
-    // hide the browser's default radio
-    &-default {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-        height: 0;
-        width: 0;
+    margin-right: rem(20px);
+    line-height: rem(20px);
+    cursor: pointer;
+}
 
-        // display point inside custom radio button if it is checked
-        &:checked ~ .radio-custom::after {
-            display: block;
-        }
-        &:checked ~ .radio-custom{
-            border-color: $color-primary;
-        }
+// the browser's default radio button
+.radio-default {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+
+    // display point inside custom radio button if it is checked
+    &:checked ~ .radio-custom::after {
+        display: block;
     }
-    
-    // create custom radio button
-    &-custom {
-        position: relative;
-        display: inline-block;
-        width: 20px;
-        height: 20px;
+    &:checked ~ .radio-custom {
+        border-color: $color-primary;
+    }
+
+    &:focus {
+        outline: none;
         
-        box-sizing: border-box;
-        border-radius: 100%;
-        border: 1px solid rgba($color-shade, .25);
+        ~ .radio-custom {
+            box-shadow: 0 0 0 2px rgba($color-primary, .25);
+        }
     }
+}
     
-
-    // point inside radio
-    &-custom::after {
+// custom radio button
+.radio-custom {
+    position: relative;
+    display: inline-block;
+    width: rem(20px);
+    height: rem(20px);
+    
+    box-sizing: border-box;
+    border-radius: 100%;
+    border: 1px solid rgba($color-shade, .25);
+    
+    // point inside it
+    &::after {
         content: '';
         display: none;
-        width: 12px;
-        height: 12px;
+        width: rem(12px);
+        height: rem(12px);
 
+        // TODO: avoid absolute positioning
         position: absolute;
-        top: 3px;
-        left: 3px;
+        top: rem(3px);
+        left: rem(3px);
 
         border-radius: 100%;
         background: $gradient-primary;
     }
+}
 
-    &-label {
-        margin-left: 10px;
-    }
-
+.radio-label {
+    margin-left: rem(10px);
 }
