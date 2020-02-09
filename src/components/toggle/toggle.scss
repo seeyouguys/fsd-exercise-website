@@ -1,33 +1,36 @@
 @import '../../theme/utils/variables.scss';
+@import '../../theme/utils/mixins.scss';
 
 .toggle {
-    line-height: 20px;
+    line-height: rem(20px);
     display: grid;
     grid-template-columns: auto 1fr;
-    column-gap: 10px;
+    column-gap: rem(10px);
+    cursor: pointer;
 }
 
 // checkbox based toggle
 .toggle-custom {
     display: inline-block;
     position: relative;
-    height: 20px;
-    width: 40px;
+    height: rem(20px);
+    width: rem(40px);
 
     box-sizing: border-box;
     border: 1px solid rgba($color-shade, .25);
-    border-radius: 10px;
+    border-radius: rem(10px);
 
     // point inside the toggle
     &::after {
         content: '';
-        display: block;
-        width: 12px;
-        height: 12px;
+        display: inline-block;
+        width: rem(12px);
+        height: rem(12px);
 
+        // TODO: get rid of position: absolute and top: 3px
         position: absolute;
-        top: 3px;
-        left: 3px;
+        top: rem(3px);
+        left: rem(3px);
         transition: 70ms left ease-in;
 
         border-radius: 100%;
@@ -36,18 +39,26 @@
 }
 
 // hide default checkbox
+// TODO: fix .checkbox-default class having same name here and in the checkbox.scss
 .checkbox-default {
     position: absolute;
     opacity: 0;
-    cursor: pointer;
     height: 0;
     width: 0;
+    
+    // accesibility
+    &:focus {
+        outline: none;
+        ~ .toggle-custom {
+            box-shadow: 0 0 0 2px rgba($color-primary, .25);
+        }
+    }
 
     &:checked ~ .toggle-custom {
         border-color: $color-primary;
         
         &::after {
-            left: 23px;
+            left: rem(23px);
             background: $gradient-primary;
         }
     }
