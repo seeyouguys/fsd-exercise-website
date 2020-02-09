@@ -2,24 +2,15 @@
 @import '../../theme/utils/mixins.scss';
 
 .benefit {
-    width: 280px;
-    // display: flex;
+    width: rem(280px);
 
-    font: 14px/24px $font-content;
-
-    &::after {
-        content: '';
-        display: block;
-        height: 1px;
-        width: 100%;
-        background-color: rgba($color-shade, .1);
-        margin: 20px 0;
-    }
+    font: rem(14px) $font-content;
+    line-height: rem(24px);
     
     &__icon {
         float: left;
-        margin-right: 10px;
-        font-size: 48px;
+        margin-right: rem(10px);
+        font-size: rem(48px);
         @include text-color($gradient-primary);
     }
     
@@ -31,4 +22,13 @@
         padding: 0;
         margin: 0;
     }  
+
+    &::after {
+        content: '';
+        display: block;
+        height: 1px;
+        width: 100%;
+        background-color: rgba($color-shade, .1);
+        margin: rem(20px) 0;
+    }
 }
