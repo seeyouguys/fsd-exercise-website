@@ -1,5 +1,4 @@
-//- radio-group
-    a group of radio buttons
+//- a group of radio buttons
 
     options.name - html 'name' attribute uniting the radio buttons
     options.items - an array of the options
@@ -15,7 +14,8 @@
                 { label: 'Женщина', value: "female" }
             ]
         })
-mixin radio-group(options)
+
+mixin radio-group(options = {})
     each item in options.items
         label.radio
 

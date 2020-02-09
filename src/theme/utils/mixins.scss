@@ -1,3 +1,5 @@
+@import '../../theme/utils/variables.scss';
+
 // px to rem
 @function rem($pixels, $context: $mainFontSize) {
   @if (unitless($pixels)) {
@@ -7,11 +9,6 @@
     $context: $context * 1px;
   }
   @return $pixels / $context * 1rem;
-}
-
-@mixin size($width,$height: $width) {
-  width: $width;
-  height: $height;
 }
 
 // set gradient as a color for text/icon

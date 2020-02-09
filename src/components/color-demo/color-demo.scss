@@ -1,17 +1,24 @@
-@import '../../theme/variables.scss';
+@import '../../theme/utils/variables.scss';
+@import '../../theme/utils/mixins.scss';
 
 .color-demo {
     display: flex;
     align-items: center;
-}
 
-.color-demo__sample {
-    width: 70px;
-    height: 70px;
-    margin-right: 40px;
-    border-radius: 6px;
-}
+    &__sample {
+        width: rem(70px);
+        height: rem(70px);
+        border-radius: 6px;
+        margin-right: rem(40px);
+    }
+    
+    &__name {
+        margin: 0;
+        line-height: rem(29px);
+    }
 
-.color-demo__name {
-    margin: 0;
+    &__hex {
+        margin: 0;
+        line-height: rem(29px);
+    }
 }

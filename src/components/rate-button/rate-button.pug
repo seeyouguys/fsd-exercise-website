@@ -1,23 +1,25 @@
-//- component shows rating using stars
+//- component shows rating using 5 empty/filled stars
 
-    first of all it creates n filled stars, if there are less than 5 of them, others are created empty.
+    options.rating - numbers of filled stars
 
     example: 
         +rate-button({ rating: 4 })
 
-mixin rate-button({ rating })
+mixin rate-button({ rating } = {})
     if rating > 5
-        -rating = 5
+        - rating = 5
     if rating < 0
-        -rating = 0
+        - rating = 0
 
     - var starsNumber = 0 // number of created stars
     .rate-button
+        //- create n filled stars (n equals to the passed rating)
         while rating > 0
             span.material-icons.rate-button__star star
             - rating--
             - starsNumber++
         
+        //- if there are less than 5 stars, others are created empty
         while starsNumber < 5
             span.material-icons.rate-button__star star_border
             - starsNumber++

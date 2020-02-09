@@ -1,29 +1,32 @@
-@import '../../theme/variables.scss';
-@import '../../styles/mixins.scss';
+@import '../../theme/utils/variables.scss';
+@import '../../theme/utils/mixins.scss';
 
-// button or button-stylized link
+// button or button-styled link
 .btn {    
     text-decoration: none;
     outline: none;
     border: none;
-    min-width: 99px;
+    min-width: rem(99px);
 
-    font: bold 12px/44px $font-content;
+    font: bold rem(12px) $font-content;
+    line-height: rem(44px);
     text-align: center;
     text-transform: uppercase;
     
-    height: 44px; 
-    border-radius: 22px;
+    height: rem(44px); 
+    border-radius: rem(22px);
     display: inline-block;
+
+    cursor: pointer;
 
     // add this class for lower-height button
     &_slim {
-        height: 34px;
-        line-height: 34px;
+        height: rem(34px);
+        line-height: rem(34px);
     }
     &_ghost.btn_slim {
-        height: 30px;
-        line-height: 30px;
+        height: rem(30px);
+        line-height: rem(30px);
     }
 
     // filled btn
@@ -31,7 +34,7 @@
         background: $gradient-primary;
         color: $color-bg;
 
-        &:hover {
+        &:hover, &:focus {
             opacity: .5;
         }
     }
@@ -50,23 +53,23 @@
         &-primary {
             color: $color-primary;
         }
-        &:hover {
+        &:hover, &:focus {
             opacity: .5;
         }
     }
 
-    // wide (stratch to the parent's width) filled true button with an icon
-    &_big {
+    // wide (stretches to the parent's width) filled true button with an icon
+    &_submit {
         display: block;
         width: 100%;
         position: relative;
-        max-width: 320px;
+        max-width: rem(320px);
     }
     
-    // icon for btn_big
+    // icon for btn_submit
     &__icon {
-        line-height: 44px;
-        width: 44px;
+        line-height: rem(44px);
+        width: rem(44px);
         text-align: center;
 
         position: absolute;
@@ -74,7 +77,6 @@
 
         color: $color-bg;
         user-select: none;
-        cursor: pointer;
     }
     
     // text and gradient border button
@@ -84,10 +86,10 @@
     // TODO: fix btn_ghost behaving as if there is no border
     // (pseudo element doesn't affect the layout)
     &_ghost {
-        min-width: 95px; // -4px due to the gradient pseudo border
-        margin: 2px;
-        height: 40px;
-        line-height: 40px;
+        min-width: rem(95px); // -4px due to the gradient pseudo border
+        margin: rem(2px);
+        height: rem(40px);
+        line-height: rem(40px);
 
         color: $color-primary;
         background: $color-bg;
@@ -103,7 +105,7 @@
             transform: translateZ(-1px);
             
             background: $gradient-primary;
-            border-radius: 22px;
+            border-radius: rem(22px);
             
             position: absolute;
             top: -2px;
@@ -111,7 +113,7 @@
             left: -2px;
             right: -2px;
         }
-        &:hover::before {
+        &:hover::before, &:focus::before {
             opacity: .5;
         }
     }

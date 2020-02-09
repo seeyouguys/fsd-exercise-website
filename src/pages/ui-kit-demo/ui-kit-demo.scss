@@ -1,11 +1,24 @@
-@import '../../theme/variables.scss';
+@import '../../theme/utils/variables.scss';
+@import '../../theme/utils/mixins.scss';
+
+.demo-block {
+    min-height: 100vh;
+    background-color: $color-bg;
+    // here should be a pseudoelement with logo.svg
+}
+
+.section-header {
+    margin: 0;
+    padding: 0;
+    margin-bottom: rem(6px);
+}
+
 // 
 // Colors and fonts
 //
 
 .colors-and-fonts {
     padding: 145px 150px;
-    background-color: $color-bg;
 
     display: flex;
     justify-content: space-between;
@@ -14,11 +27,14 @@
 
 .colors {
     display: grid;
+    grid-auto-rows: max-content;
     row-gap: 20px;
 }
 
 .fonts {
+    margin-right: 37px;
     display: grid;
+    grid-auto-rows: max-content;
     grid-template-columns: 40px 340px;
     column-gap: 30px;
     row-gap: 50px;
@@ -63,6 +79,8 @@
 .rich-checkboxes {
     display: grid;
     row-gap: 10px;
+    max-width: 255px;
+    grid-auto-rows: max-content;
 }
 
 .radio-group {

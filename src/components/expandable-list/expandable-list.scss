@@ -1,5 +1,5 @@
-@import '../../theme/variables.scss';
-
+@import '../../theme/utils/variables.scss';
+@import '../../theme/utils/mixins.scss';
 
 // expandable-list
 // dropdown's header labeled to a hidden checkbox,
@@ -7,7 +7,8 @@
 .exp-list {
     &__label {
         display: flex;
-        font: bold 12px/24px $font-content;
+        font: bold rem(12px) $font-content;
+        line-height: rem(24px);
         color: $color-shade;
         text-transform: uppercase;
         cursor: pointer;
@@ -17,7 +18,7 @@
         user-select: none;
         color: rgba($color-shade, .5);
         transition: transform 100ms linear;
-        margin-left: 30px; 
+        margin-left: rem(30px); 
     }
 
     &__checkbox {
@@ -35,15 +36,16 @@
             }
         }
     }
+
     &__content {
         position: relative;
-        min-height: 40px; // animation looks stupid w/o min-height
+        min-height: rem(40px); // animation looks stupid w/o min-height
         transition: transform 100ms ease-in, min-height 120ms ease-in;
         transform-origin: top;
 
         display: grid;
         grid-auto-flow: row;
-        row-gap: 10px;
-        margin-top: 13px;
+        row-gap: rem(10px);
+        margin-top: rem(13px);
     }
 }

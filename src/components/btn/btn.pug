@@ -1,19 +1,23 @@
-//- btn or button-stylized link
+//- button or button-styled link
 
-    class attribute is required, additional classes are allowed
-    renderds a button if btn_text class applied, or link otherwise
-    
-    button types (also the are classnames you should use):
-        btn_primary btn_ghost btn_text btn_big
-        btn_big - wide (stratch to the parent's width) filled true button with an icon
-    
-    usage:
-        +btn({ text: 'click me', href: '#', class: 'btn_primary' })
-        +btn({ text: 'click me', href: '#', class: 'btn_ghost' })
-        +btn({ text: 'click me', href: '#', class: 'btn_text'})
+    options.text - button's text
+    options.href - link's href attribute
+    options.class - button type (required) and additional classes (optional)
 
-//- TODO: add button classes' descriptions
-mixin btn(options)
+    button types (also the classnames you should use):
+        btn_primary - gradient-colored button-styled link 
+        btn_ghost - empty button-styled link with a gradient-colored text and border
+        btn_text - button without borders, can be modified (btn-text__primary, btn-text__secondary) 
+        btn_submit - wide (stretches to the parent's width) filled true button with an icon
+
+    example:
+        +btn({ text: 'click me', href: 'changeme.com', class: 'btn_primary' })
+        +btn({ text: 'click me', href: 'changeme.com', class: 'btn_ghost' })
+        +btn({ text: 'click me', href: 'changeme.com', class: 'btn_text btn_text-primary'})
+        +btn({ text: 'click me', href: 'changeme.com', class: 'btn_text btn_text-secondary'})
+        +btn({ text: 'click me', href: 'changeme.com', class: 'btn_submit'})
+
+mixin btn(options = {})
     
     //- btn_text should be a true button, not a link
     if options.class.includes('btn_text')
@@ -23,10 +27,10 @@ mixin btn(options)
             id= options.id
         )= options.text
     
-    //- big_btn displays as a block and comes with an icon
-    else if options.class.includes('btn_big')
+    //- btn_submit stretches as a block and comes with an icon
+    else if options.class.includes('btn_submit')
         button(
-            class= 'btn btn_primary btn_big ',
+            class= 'btn btn_primary btn_submit ',
             href= options.href,
             id= options.id
         )

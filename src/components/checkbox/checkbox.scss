@@ -1,88 +1,95 @@
-@import '../../theme/variables.scss';
+@import '../../theme/utils/variables.scss';
+@import '../../theme/utils/mixins.scss';
 
-// hide default and create custom checkbox,
-// checkmark is just two rectangles one overlayering the other
+// wrapper
 .checkbox {
     display: flex;
-    line-height: 18px;
-
-    // hide the browser's default checkbox
-    &-default {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-        height: 0;
-        width: 0;
-
-        // "selector1 ~ selector2" takes all elems matching second selector
-        // which are placed after the elems matching the first one.
-        // thus, the rule below applies only when the hidden checkbox is checked
-        &:checked {
-            ~.checkbox-custom {
-                border-color: $color-primary;
-            }
-
-            ~.checkbox-custom::before {
-                display: block;
-            }
-        }
-    }
-   
-   // label, it's text and optional info block
-   &-label {
-       color: rgba($color-shade, .5);
-       margin-left: 10px;
-
-       &__text {
-           font-size: 14px;
-           line-height: 20px;
-
-           &_rich {
-               color: rgba($color-shade, .75);
-               font-weight: bold;
-           }
-       }
-
-       &__info {
-           font: 12px/14px $font-content;
-           color: rgba($color-shade, .5);
-           margin: 5px 0 0 0;
-       }
-   }
-
-   // custom checkbox
-   &-custom { 
-       position: relative;
-       min-width: 20px;
-       width: 20px;
-       height: 20px;
-       background-color: $color-bg;
-       
-       box-sizing: border-box;
-       border: 1px solid rgba($color-shade, .25);
-       border-radius: 4px;
-   }
-   
-   // checkmark (white rectangle)
-   &-custom::after, &-custom::before {
-       content: '';
-       display: block;
-       background-color: $color-bg;
-       
-       width: 6px;
-       height: 8px;
-       transform: rotate(45deg);
-
-       // values were picked up empirically
-       position: absolute;
-       top: 0.5px; // it needs to be a little bit higher
-       left: 5.5px;
-   }
-   // checkmark (gradient rectangle)
-   &-custom::before {
-       display: none;
-       top: 3.5px; 
-       background: $gradient-primary;
-   }
+    line-height: rem(18px);
+    cursor: pointer;
 }
 
+// the browser's default checkbox
+.checkbox-default {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+
+    // the rule below applies on custom checkbox only when the hidden one is checked
+    &:checked {
+        ~.checkbox-custom {
+            border-color: $color-primary;
+        }
+
+        ~.checkbox-custom::before {
+            display: block;
+        }
+    }
+    
+    // accesibility
+    &:focus {
+        ~.checkbox-custom {
+            box-shadow: 0 0 0 2px rgba($color-primary, .25);
+        }
+    }
+}
+
+// custom checkbox
+.checkbox-custom {
+    position: relative;
+    min-width: rem(20px);
+    width: rem(20px);
+    height: rem(20px);
+    background-color: $color-bg;
+    
+    box-sizing: border-box;
+    border: 1px solid rgba($color-shade, .25);
+    border-radius: 4px;
+
+    // checkmark is just two rectangles one overlayering the other
+    // (::after = white rectangle, ::before = gradient rectangle)
+    &::after, &::before {
+        content: '';
+        display: block;
+        background-color: $color-bg;
+
+        width: rem(6px);
+        height: rem(8px);
+        transform: rotate(45deg);
+
+        // TODO: get rid of position: absolute, top, left
+        position: absolute;
+        top: rem(0.5px);
+        left: rem(5.5px);
+    }
+
+    // checkmark (gradient rectangle)
+    &::before {
+        display: none;
+        top: rem(3.5px);
+        background: $gradient-primary;
+    }
+}
+   
+// label, it's text and optional info block
+.checkbox-label {
+    color: rgba($color-shade, .5);
+    margin-left: rem(10px);
+
+    &__text {
+        font-size: rem(14px);
+        line-height: rem(20px);
+
+        &_rich {
+            color: rgba($color-shade, .75);
+            font-weight: bold;
+        }
+    }
+
+    &__info {
+        font: rem(12px) $font-content;
+        line-height: rem(14px);
+        color: rgba($color-shade, .5);
+        margin: rem(5px) 0 0 0;
+    }
+}

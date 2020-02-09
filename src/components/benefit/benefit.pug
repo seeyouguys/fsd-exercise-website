@@ -1,8 +1,12 @@
-//- benefit
-    short phrase w/ info and icon from material-icons
+//- block contents short info paragraph and icon from material-icons
+
+    options.title - name of the feature
+    options.info - details of the feature
+    options.iconName - name of an icon from material-icons
 
     example: 
-        +benefit({ title: 'Комфорт', info: 'Шумопоглощающие стены', iconName: 'insert_emoticon'})
+        +benefit({ title: 'Комфорт', info: 'Шумопоглощающие стены', iconName: 'insert_emoticon' })
+
 mixin benefit({ title, info, iconName })
     .benefit
         span.material-icons.benefit__icon= iconName

@@ -21,15 +21,15 @@ include ../../components/room-preview/room-preview
 
 block main
 
-    article.colors-and-fonts
+    article.demo-block.colors-and-fonts
         .colors
-            +color-demo({ name: 'Dark Shade 100%', color: '#1F2041' })
-            +color-demo({ name: 'Dark Shade 75%', color: '#1F2041', opacity: '.75' })
-            +color-demo({ name: 'Dark Shade 50%', color: '#1F2041', opacity: '.50' })
-            +color-demo({ name: 'Dark Shade 25%', color: '#1F2041', opacity: '.25' })
-            +color-demo({ name: 'Dark Shade 5%', color: '#1F2041', opacity: '.05' })
-            +color-demo({ name: 'Purple', color: '#BC9CFF' })
-            +color-demo({ name: 'Green', color: '#6FCF97' })
+            +color-demo({ name: 'Dark Shade 100%', hex: '#1F2041' })
+            +color-demo({ name: 'Dark Shade 75%', hex: '#1F2041', opacity: '.75' })
+            +color-demo({ name: 'Dark Shade 50%', hex: '#1F2041', opacity: '.50' })
+            +color-demo({ name: 'Dark Shade 25%', hex: '#1F2041', opacity: '.25' })
+            +color-demo({ name: 'Dark Shade 5%', hex: '#1F2041', opacity: '.05' })
+            +color-demo({ name: 'Purple', hex: '#BC9CFF' })
+            +color-demo({ name: 'Green', hex: '#6FCF97' })
         
         .fonts
             h1.muted-text h1
@@ -87,13 +87,13 @@ block main
             })
 
         section.checkboxes
-            h3 Checkbox buttons
-            +checkbox({label: 'Можно курить' })
-            +checkbox({label: 'Можно с питомцами', attributes: {checked: true}})
-            +checkbox({label: 'Можно пригласить гостей (до 10 человек)', attributes: {checked: true}})
+            h3.section-header Checkbox buttons
+            +checkbox({ label: 'Можно курить'  })
+            +checkbox({ label: 'Можно с питомцами', attributes: { checked: true } })
+            +checkbox({ label: 'Можно пригласить гостей (до 10 человек)', attributes: { checked: true } })
 
         section.radio-btns
-            h3 Radio buttons
+            h3.section-header Radio buttons
             .radio-group
                 +radio-group({
                     name: 'gender',
@@ -104,7 +104,7 @@ block main
                 })
         
         section.toggles
-            h3 Toggle
+            h3.section-header Toggle
             +toggle({
                 label: 'Получать спецпредложения',
                 attributes: { name: 'specialOffers', checked: true },
@@ -113,28 +113,28 @@ block main
             +toggle({ label: 'Получать спецпредложения', mix: 'toggles__item' })
 
         section.like-buttons
-            h3 Like button
+            h3.section-header Like button
             p placeholder
 
         section.rate-buttons
-            h3 Rate button
+            h3.section-header Rate button
             +rate-button({ rating: 4 })
             +rate-button({ rating: 5 })
         
         section.range-slider-section
-            h3 Range slider
+            h3.section-header Range slider
             p placeholder
         
         section.buttons
-            h3 Buttons
-            +btn({ text: 'click me', href: '#', class: 'btn_primary' })
-            +btn({ text: 'click me', href: '#', class: 'btn_ghost' })
-            +btn({ text: 'click me', href: '#', class: 'btn_text btn_text-primary'})
-            +btn({ text: 'click me', href: '#', class: 'btn_text btn_text-secondary'})
-            +btn({ text: 'Перейти к оплате', href: '#', class: 'btn_big'})
+            h3.section-header Buttons
+            +btn({ text: 'click me', href: 'changeme.com', class: 'btn_primary' })
+            +btn({ text: 'click me', href: 'changeme.com', class: 'btn_ghost' })
+            +btn({ text: 'click me', href: 'changeme.com', class: 'btn_text btn_text-primary'})
+            +btn({ text: 'click me', href: 'changeme.com', class: 'btn_text btn_text-secondary'})
+            +btn({ text: 'Перейти к оплате', href: 'changeme.com', class: 'btn_submit'})
 
         section.pagination-section
-            h3 Pagination
+            h3.section-header Pagination
             p placeholder
         
         section.exp-checkbox-list-section
@@ -149,7 +149,7 @@ block main
 
         
         section.rich-checkboxes
-            h3 Rich checkbox buttons
+            h3.section-header Rich checkbox buttons
             +checkbox({ label: 'Широкий коридор', attributes: { name: 'wideCorridor' } })
                 | Ширина коридоров в номере не менее 91 см.
             +checkbox({ label: 'Помощник для инвалидов', attributes: { name: 'disabledAssistance' } })
@@ -157,7 +157,7 @@ block main
             
         
         section.bullet-list-section
-            h3 Bullet list
+            h3.section-header Bullet list
             ul
                 li Нельзя с питомцами
                 li Без вечеринок и мероприятий

@@ -3,18 +3,19 @@
     custom checkbox input
     becomes checkbox_rich if optional block of content is provided
 
+    options.label - label of the checkbox
+    options.mix - additional classes
+    options.attributes - any input's attributes like id, name, value, etc
+
     example: 
         +checkbox({ label: 'Можно курить', attributes: { name: 'isSmokingAllowed', id: 'smoking-field' } })
 
         +checkbox({ label: 'Широкий коридор', attributes: { name: 'wideCorridor' } })
             | Ширина коридоров в номере не менее 91 см.
-mixin checkbox(options)
-    if !options
-        - options = {}
 
+mixin checkbox(options = {})
     - var labelTextClass = `checkbox-label__text`
     - labelTextClass +=  block ? ' checkbox-label__text_rich' : ''
-
 
     label.checkbox
         input.checkbox-default(type="checkbox")&attributes(options.attributes)

@@ -1,7 +1,7 @@
 //- text field
     
-    options.label: title above the field
-    options.mix - string that would be mixed in the classes of the component's root
+    options.label - title above the field
+    options.mix - additional classes
     options.attributes - any input's attributes like id, placeholder, value, etc
 
     example:
@@ -23,12 +23,9 @@
             'data-mask': '00/00/0000'
         }
 
-mixin text-field(options)
-
-    if !options
-        - options = {}
-    
-    - var classes = 'text-field ' + (options.mix || '')
+mixin text-field(options = {})
+    -
+        var classes = 'text-field ' + (options.mix || '')
 
     label(class= classes)
     
