@@ -6,7 +6,7 @@ html {
   font-size: $mainFontSize;
 }
 
-body, html {
+body, html, p, h1, h2, h3 {
   margin: 0;
   padding: 0;
 }
@@ -16,6 +16,7 @@ body {
   font: normal rem(14px) $font-content;
   line-height: rem(24px);
   background-color: #fff;
+  background-color: rgb(189, 189, 189);;
 }
 
 h1 {

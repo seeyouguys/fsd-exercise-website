@@ -1,42 +1,38 @@
-//- navigation menu
-    menu_link is a default class that applies general styles, 
-    ${className}__link allows to mix in some block-specific styles (i.e. header-nav__link)
+//- main header contains logo, navigation and login-register/username section
 
-    items is an array of {title:str, href:str, active:bool} objects 
-mixin menu(items, className='')
-    ul(class=`menu ${className}`)
-        each item in items
-            - var itemClass = `menu__link ${className}__link`
-            if item.active
-                - itemClass+= ` menu__link_active ${className}__link_active`
+    options.navItems - array of { name, href } objects
+    options.username - if not passed assume that user is not logged in
+
+    example:
+        +header({ username: 'Konstantin Konstantinopolsky' })
+    
+    TODO: if username is provided, show it instead of login buttons
+
+include ../logo/logo
+include ../btn/btn
+
+mixin header({ navItems, username } = {})
+    if !navItems
+        - 
+            //- default header-navigation links
+            navItems = [
+                { name: 'Home',          href: 'changeme.com' },
+                { name: 'About us',      href: 'changeme.com' },
+                { name: 'Services',      href: 'changeme.com' },
+                { name: 'Careers',       href: 'changeme.com' },
+                { name: 'News',          href: 'changeme.com' },
+                { name: 'Documentation', href: 'changeme.com' }
+            ]
+
+    header.main-header
+        .main-header__container
+            .main-header__logo
+                +logo()
             
-            li: a(href=item.href class=itemClass )= item.title
-
-//- +menu is deprecated now
-
--
-    var menuItems = [
-        { title: 'home', href: '#', active: true },
-        { title: 'about us', href: '#' },
-        { title: 'services', href: '#' },
-        { title: 'careers', href: '#' },
-        { title: 'news', href: '#' },
-        { title: 'documentation', href: '#' }
-    ]
-
-mixin header(options)
-    header.header
-        .header-wrap
-            .header__section.header__logo
-                img(src="/assets/img/toxin-logo.svg", alt="Toxin logo")
+            nav.main-nav
+                each item in navItems
+                    a(href=item.href).main-nav__item= item.name
             
-            .header__section.header__nav
-                +menu(menuItems, 'header-nav')
-            
-            .header__section.header__profile
-                if !userName
-                    +btn('login')(href='#' class='btn_ghost btn_slim')
-                    +btn('register')(href='#' class='btn_primary btn_slim')
-                else
-                    span.username #{userName}
-                
+            .main-header__user-section
+                +btn({ text: 'login', href: 'changeme.com', class: 'btn_ghost' })
+                +btn({ text: 'register', href: 'changeme.com', class: 'btn_primary' })
