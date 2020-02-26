@@ -1,5 +1,9 @@
-//- font-awesome icon-stylized links. used in both footers
-mixin contact-links(className='')
-    a(href='#' class=`${className} fab fa-twitter`)
-    a(href='#' class=`${className} fab fa-facebook-square`)
-    a(href='#' class=`${className} fab fa-instagram`)
+//- font-awesome icon-stylized social-media links
+
+    example:
+        +contact-links()
+
+mixin contact-links({ className = '' } = {})
+    a(href='changeme.com' class=`${className} fab fa-twitter`)
+    a(href='changeme.com' class=`${className} fab fa-facebook-square`)
+    a(href='changeme.com' class=`${className} fab fa-instagram`)

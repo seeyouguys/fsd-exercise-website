@@ -1,8 +1,11 @@
-.subscribe {
+@import '../../theme/utils/variables.scss';
+@import '../../theme/utils/mixins.scss';
+
+.subscribe-form {
     position: relative;
-    &__arrow-btn {
-        width: 44px;
-        height: 44px;
+    &__send-btn {
+        width: rem(44px);
+        height: rem(44px);
         
         background-color: transparent;
         padding: 0;
@@ -11,7 +14,7 @@
         border: none;
         
         @include text-color($gradient-primary);
-        position: absolute;
+        position: absolute; // TODO: avoid usind position: absolute
         left: calc(320px-44px);
 
         &:hover {
