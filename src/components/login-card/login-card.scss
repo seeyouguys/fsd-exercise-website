@@ -1,25 +1,26 @@
 @import '../../theme/utils/variables.scss';
+@import '../../theme/utils/mixins.scss';
 
 .card {
-    width: 380px;
-    padding: 29px;
-    padding-top: 39px; 
+    width: rem(380px);
+    padding: rem(29px);
+    padding-top: rem(39px); 
 
     box-sizing: border-box;
     border: 1px solid rgba(0, 0, 0, 0.12);
-    border-radius: 4px;
+    border-radius: rem(4px);
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
     
     background: $color-bg;
 
     display: grid;
     grid-auto-flow: row;
-    grid-row-gap: 20px;
+    grid-row-gap: rem(20px);
     
     &__fields {
         display: grid;
         grid-auto-flow: row;
-        row-gap: 10px;
+        row-gap: rem(10px);
     }
 
     &__header {
@@ -30,14 +31,13 @@
 
 .login-card {
     &__no-acc-section {
-        margin-top: 10px;
+        margin-top: rem(10px);
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
     &__no-acc-text {
-        font: 14px/18px $font-content;
         color: #000;
     }
 }

@@ -1,0 +1,16 @@
+extends ../../layouts/base-layout
+    
+include ../../components/header/header
+include ../../components/footer/footer
+include ../../components/login-card/login-card
+
+block variables
+    - var title= "Вход | Toxin"
+
+block main
+    .sign-in-page__background-image
+        +header()
+        .sign-in-page__container
+            +login-card({ formAttributes: { action: '#', method: 'post' } })
+    +footer()
+

@@ -1,0 +1,19 @@
+@import '../../theme/utils/variables.scss';
+@import '../../theme/utils/mixins.scss';
+
+.sign-in-page__background-image {
+    background: no-repeat url('./img/sign-in-page__background.jpg');
+    background-size: cover;
+}
+
+.sign-in-page__container {
+    width: 100%;
+    max-width: 1160px;
+    
+    margin: 0 auto;
+    padding: rem(163px) 0;
+    
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
