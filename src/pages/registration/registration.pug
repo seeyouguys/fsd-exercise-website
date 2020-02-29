@@ -1,0 +1,16 @@
+extends ../../layouts/base-layout
+    
+include ../../components/header/header
+include ../../components/footer/footer
+include ../../components/registration-card/registration-card
+
+block variables
+    - var title= "Регистрация | Toxin"
+
+block main
+    .registration-page__background-image
+        +header()
+        .registration-page__container
+            +registration-card({ formAttributes: { action: '#', method: 'post' } })
+    +footer()
+
