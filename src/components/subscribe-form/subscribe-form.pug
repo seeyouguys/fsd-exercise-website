@@ -1,8 +1,21 @@
 //- subscribe form
     text field with an arrow-styled submit button
 
-    usage: +subscribe-form('subscription label')(method="get" action="#")
-mixin subscribe-form(label)
-    form&attributes(attributes).subscribe
+    options.label - label of the field
+    options.attributes - form attributes such as method and action
+
+    example:
+        +subscribe-form({
+            label: 'subscription label',
+            attributes: {
+                method: 'get',
+                action: '#'
+            }
+        })
+
+include ../text-field/text-field
+
+mixin subscribe-form({ label, attributes })
+    form&attributes(attributes).subscribe-form
         +text-field(label)(name='email' placeholder='Email')
-        button(type="submit" class="material-icons subscribe__arrow-btn") arrow_forward
+        //- button(type="submit" class="material-icons subscribe-form__send-btn") arrow_forward

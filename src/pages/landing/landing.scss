@@ -1,0 +1,18 @@
+@import '../../theme/utils/variables.scss';
+@import '../../theme/utils/mixins.scss';
+
+.landing-page__background-image {
+    background: no-repeat url('./img/landing-page__background.jpg');
+    background-size: cover;
+}
+
+.landing-page__container {
+    // 4.375rem (70px) = height of the header
+    // 4.375rem (70px) = height of the padding-top
+    height: calc(100vh - 4.375rem - 4.375rem); 
+    width: 100%;
+    max-width: 1160px;
+    
+    margin: 0 auto;
+    padding-top: rem(70px);
+}

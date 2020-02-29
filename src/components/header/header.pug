@@ -1,42 +1,66 @@
-//- navigation menu
-    menu_link is a default class that applies general styles, 
-    ${className}__link allows to mix in some block-specific styles (i.e. header-nav__link)
+//- main header contains logo, navigation and login-register/username section
 
-    items is an array of {title:str, href:str, active:bool} objects 
-mixin menu(items, className='')
-    ul(class=`menu ${className}`)
-        each item in items
-            - var itemClass = `menu__link ${className}__link`
-            if item.active
-                - itemClass+= ` menu__link_active ${className}__link_active`
+    options.lang - 'en' || 'ru'
+    options.username - if not passed assume that user is not logged in
+
+    example:
+        +header({ lang: 'en', username: 'Konstantin Konstantinopolsky' })
+    
+    TODO: if username is provided, show it instead of login buttons
+
+include ../logo/logo
+include ../btn/btn
+
+mixin header({ lang='ru', username } = {})
+    //- item names for different languages
+    //- TODO: find a way to move them in a separate file
+    - 
+        var localization = {
+            navItems: {
+                en: [
+                    { name: 'news',          href: 'changeme.com' },
+                    { name: 'about us',      href: 'changeme.com', expandable: true },
+                    { name: 'services',      href: 'changeme.com' },
+                    { name: 'careers',       href: 'changeme.com' },
+                    { name: 'news',          href: 'changeme.com' },
+                    { name: 'documentation', href: 'changeme.com' }
+                ],
+                ru: [
+                    { name: 'о нас',         href: 'changeme.com' },
+                    { name: 'услуги',        href: 'changeme.com', expandable: true },
+                    { name: 'вакансии',      href: 'changeme.com' },
+                    { name: 'новости',       href: 'changeme.com' },
+                    { name: 'Cоглашения',    href: 'changeme.com', expandable: true },
+                ]
+            },
+            buttonsText: {
+                en: {
+                    login: 'login',
+                    register: 'register'
+                },
+                ru: {
+                    login: 'вход',
+                    register: 'регистрация'
+                }
+            }
+        }
+    -
+        var navItems = localization.navItems[lang]
+        var buttonsText = localization.buttonsText[lang]
+
+
+    header.main-header
+        .main-header__container
+            .main-header__logo
+                +logo()
             
-            li: a(href=item.href class=itemClass )= item.title
-
-//- +menu is deprecated now
-
--
-    var menuItems = [
-        { title: 'home', href: '#', active: true },
-        { title: 'about us', href: '#' },
-        { title: 'services', href: '#' },
-        { title: 'careers', href: '#' },
-        { title: 'news', href: '#' },
-        { title: 'documentation', href: '#' }
-    ]
-
-mixin header(options)
-    header.header
-        .header-wrap
-            .header__section.header__logo
-                img(src="/assets/img/toxin-logo.svg", alt="Toxin logo")
+            nav.main-nav
+                each item in navItems
+                    //- data-text attribute is essential for one header.scss trick
+                    a(href=item.href data-text=item.name).main-nav__item= item.name
+                    if(item.expandable)
+                        i.material-icons expand_more
             
-            .header__section.header__nav
-                +menu(menuItems, 'header-nav')
-            
-            .header__section.header__profile
-                if !userName
-                    +btn('login')(href='#' class='btn_ghost btn_slim')
-                    +btn('register')(href='#' class='btn_primary btn_slim')
-                else
-                    span.username #{userName}
-                
+            .main-header__user-section
+                +btn({ text: `${buttonsText.login}`, href: 'changeme.com', class: 'btn_ghost header__btn' })
+                +btn({ text: `${buttonsText.register}`, href: 'changeme.com', class: 'btn_primary header__btn' })

@@ -1,66 +1,78 @@
-//- navigation menu
-    menu_link is a default class that applies general styles, 
-    ${className}__link allows to mix in some block-specific styles (i.e. header-nav__link)
+//- footer contains logo, subscribe-to-newsletter block,
+    social media links and a few columns for other links
 
-    items is an array of {title:str, href:str, active:bool} objects 
-mixin menu(items, className='')
-    ul(class=`menu ${className}`)
-        each item in items
-            - var itemClass = `menu__link ${className}__link`
-            if item.active
-                - itemClass+= ` menu__link_active ${className}__link_active`
-            
-            li: a(href=item.href class=itemClass )= item.title
+    options.navItems - array of { name, href } objects
+    options.username - if not passed assume that user is not logged in
 
-//- +menu is deprecated now
+    example:
+        +footer()
 
-mixin footer()
-    footer.footer
-        .footer-wrap
-            .footer__section.footer__info
-                img.footer__logo(src="/assets/img/toxin-logo.svg", alt="Toxin logo")
-                | Lorem ipsum dolor sit amet consectetur adipiscing elit aliquam eget nullam pellentesque aliquam curabitur cociis.
+include ../logo/logo
+include ../contact-links/contact-links
+include ../subscribe-form/subscribe-form
 
-            .footer__section.footer__nav
-                -
-                    var navLinks = [
-                        { title: 'about us', href: '#' },
-                        { title: 'news', href: '#' },
-                        { title: 'support', href: '#' },
-                        { title: 'products', href: '#' }
+mixin footer({ navItems, brief,  } = {})
+    if !navItems
+        -
+            sections = [
+                {
+                    name: 'Навигация',
+                    items : [
+                        { name: 'О нас',  href: 'changeme.com' },
+                        { name: 'Новости',   href: 'changeme.com' },
+                        { name: 'Служба поддержки',      href: 'changeme.com' },
+                        { name: 'Услуги',  href: 'changeme.com' },
                     ]
-
-                h3 navigation
-                +menu(navLinks, 'footer-nav')
-            
-            .footer__section.footer__about
-                -
-                    var aboutLinks = [
-                        { title: 'who we are', href: '#' },
-                        { title: 'our team', href: '#' },
-                        { title: 'careers', href: '#' },
-                        { title: 'investors', href: '#' }
+                },
+                {
+                    name: 'О нас',
+                    items: [
+                        { name: 'О сервисе',  href: 'changeme.com' },
+                        { name: 'Наша команда',      href: 'changeme.com' },
+                        { name: 'Вакансии',   href: 'changeme.com' },
+                        { name: 'Инвесторы',  href: 'changeme.com' },
                     ]
-
-                h3 about us
-                +menu(aboutLinks, 'footer-nav')
-            
-            .footer__section.footer__support
-                -
-                    var supportLinks = [
-                        { title: 'documentation', href: '#' },
-                        { title: 'community', href: '#' },
-                        { title: 'get in touch', href: '#' }
+                },
+                {
+                    name: 'Служба поддержки',
+                    items: [
+                        { name: 'Соглашения',  href: 'changeme.com' },
+                        { name: 'Сообщества',      href: 'changeme.com' },
+                        { name: 'Связь с нами',   href: 'changeme.com' },
                     ]
+                },
+            ]
+
+    if !brief
+        - brief = 'Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»'
+
+    footer.main-footer
+        .main-footer__info
+            .main-footer__container
+                .main-footer__section
+                    +logo()
+                    p.main-footer__brief= brief
+        
+                each section in sections
+                    section.main-footer__section
+                        h3= section.name
+                        each item in section.items
+                            a(href=item.href).main-footer__link= item.name
                 
-                h3 support
-                +menu(supportLinks, 'footer-nav')
-            .footer__section.footer__subscribe
-                h3 subscribe to our newsletter
-                p Receive our latest news and promotions in your inbox!
-
-                input#newsletter-email(type="email", name="subscribe")
-        .footer__copyright
-            .footer-wrap.footer-wrap_copyright
-                span Copyright © 2018 Toxin UI Kit. All rights reserved.
-                .footer__contact-links: +contact-links('footer__icon')
+                .main-footer__section
+                    h3 Подписка
+                    p Получайте специальные предложения и новости сервиса
+                    +subscribe-form({
+                        label: 'Email',
+                        attributes: {
+                            method: 'get',
+                            action: '#'
+                        }
+                    })
+        
+        .main-footer__copyright
+            .main-footer__container   
+                p Copyright © 2018 Toxin отель. Все права зачищены.
+                .main-footer__contact-links
+                    +contact-links({ className: 'main-footer__contact-link' })
+            

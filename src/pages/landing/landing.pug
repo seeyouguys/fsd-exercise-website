@@ -1,0 +1,16 @@
+extends ../../layouts/base-layout
+    
+include ../../components/header/header
+include ../../components/footer/footer
+include ../../components/search-options-card/search-options-card
+
+block variables
+    - var title= "Поиск номеров | Toxin"
+
+block main
+    .landing-page__background-image
+        +header()
+        .landing-page__container
+            +search-options-card({ formAttributes: { action: '#', method: 'post' }})
+    +footer()
+

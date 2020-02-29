@@ -1,2 +1,2 @@
+import 'material-icons'
 import './header.scss'
-import './menu.scss'
