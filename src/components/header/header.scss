@@ -26,6 +26,10 @@
     &__user-section {
 
     }
+
+    &__btn {
+
+    }
 }
 
 .main-nav {
@@ -33,16 +37,30 @@
     align-items: center;
     &__item {
         text-decoration: none;
+        text-transform: capitalize;
         color: rgba($color-shade, .5);
-        margin-left: rem(30px); // 'UI-kit' - 30px, 'Website pages' - 20px
+        transition: linear color .2s;
+        
+        margin-left: rem(20px); // 'UI-kit' - 30px, 'Website pages' - 20px ???
+        &:last-child {
+            margin-right: rem(20px);
+        }
 
         &:hover, &:focus {
             color: rgba($color-shade, .75);
             font-weight: bold;
+            padding-bottom: rem(2px);
         }
-
-        &:last-child {
-            margin-right: rem(30px);
+        
+        // prevent bolded-on-hover text from moving 
+        // reserving space for bolded text via pseudo element
+        &::after {
+            display: block;
+            content: attr(data-text);
+            font-weight: bold;
+            height: 0;
+            overflow: hidden;
+            visibility: hidden;
         }
     }
 }

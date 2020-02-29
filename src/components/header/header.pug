@@ -1,28 +1,53 @@
 //- main header contains logo, navigation and login-register/username section
 
-    options.navItems - array of { name, href } objects
+    options.lang - 'en' || 'ru'
     options.username - if not passed assume that user is not logged in
 
     example:
-        +header({ username: 'Konstantin Konstantinopolsky' })
+        +header({ lang: 'en', username: 'Konstantin Konstantinopolsky' })
     
     TODO: if username is provided, show it instead of login buttons
 
 include ../logo/logo
 include ../btn/btn
 
-mixin header({ navItems, username } = {})
-    if !navItems
-        - 
-            //- default header-navigation links
-            navItems = [
-                { name: 'Home',          href: 'changeme.com' },
-                { name: 'About us',      href: 'changeme.com' },
-                { name: 'Services',      href: 'changeme.com' },
-                { name: 'Careers',       href: 'changeme.com' },
-                { name: 'News',          href: 'changeme.com' },
-                { name: 'Documentation', href: 'changeme.com' }
-            ]
+mixin header({ lang='ru', username } = {})
+    //- item names for different languages
+    //- TODO: find a way to move them in a separate file
+    - 
+        var localization = {
+            navItems: {
+                en: [
+                    { name: 'news',          href: 'changeme.com' },
+                    { name: 'about us',      href: 'changeme.com', expandable: true },
+                    { name: 'services',      href: 'changeme.com' },
+                    { name: 'careers',       href: 'changeme.com' },
+                    { name: 'news',          href: 'changeme.com' },
+                    { name: 'documentation', href: 'changeme.com' }
+                ],
+                ru: [
+                    { name: 'о нас',         href: 'changeme.com' },
+                    { name: 'услуги',        href: 'changeme.com', expandable: true },
+                    { name: 'вакансии',      href: 'changeme.com' },
+                    { name: 'новости',       href: 'changeme.com' },
+                    { name: 'Cоглашения',    href: 'changeme.com', expandable: true },
+                ]
+            },
+            buttonsText: {
+                en: {
+                    login: 'login',
+                    register: 'register'
+                },
+                ru: {
+                    login: 'вход',
+                    register: 'регистрация'
+                }
+            }
+        }
+    -
+        var navItems = localization.navItems[lang]
+        var buttonsText = localization.buttonsText[lang]
+
 
     header.main-header
         .main-header__container
@@ -31,8 +56,11 @@ mixin header({ navItems, username } = {})
             
             nav.main-nav
                 each item in navItems
-                    a(href=item.href).main-nav__item= item.name
+                    //- data-text attribute is essential for one header.scss trick
+                    a(href=item.href data-text=item.name).main-nav__item= item.name
+                    if(item.expandable)
+                        i.material-icons expand_more
             
             .main-header__user-section
-                +btn({ text: 'login', href: 'changeme.com', class: 'btn_ghost' })
-                +btn({ text: 'register', href: 'changeme.com', class: 'btn_primary' })
+                +btn({ text: `${buttonsText.login}`, href: 'changeme.com', class: 'btn_ghost header__btn' })
+                +btn({ text: `${buttonsText.register}`, href: 'changeme.com', class: 'btn_primary header__btn' })
