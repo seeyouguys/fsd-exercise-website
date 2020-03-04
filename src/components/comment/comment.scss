@@ -1,0 +1,31 @@
+@import '../../theme/utils/variables.scss';
+@import '../../theme/utils/mixins.scss';
+
+.comment {
+    display: grid;
+    grid-template-columns: rem(48px) auto;
+    column-gap: rem(10px);
+    row-gap: rem(12px);
+
+    &__userpic {
+        width: rem(48px);
+        height: rem(48px);
+        box-sizing: border-box;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        
+        box-shadow: 0 rem(10px) rem(20px) rgba($color-shade, .1);
+        background-color: rgba($color-shade, .5);
+    }
+    
+    &__userpic-char {
+        text-align: center;
+        line-height: rem(44px);
+        color: #fff;
+        font-size: 1.5rem;
+    }
+
+    &__username {
+        font-weight: bold;
+    }
+}

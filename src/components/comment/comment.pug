@@ -1,0 +1,33 @@
+//- comment
+
+    options.username - shown username
+    options.userpic -  path to user profile picture
+    options.text - text of the comment
+    options.date - timestamp, used to show how old the comment is ('5 hours ago', '2 weeks ago', ...)
+                   powered with Moment.js, so it accepts plenty of different date types
+                   see more: https://momentjs.com/docs/#/displaying/from/ 
+    options.likesNumber - number of likes that comment got
+
+    example:
+        +comment({
+            username: 'Мурад Сарафанов',
+            text: 'Великолепный матрас!',
+            date: 'February 28, 2020 04:05:00',
+            mix: 'room-details__comment'
+        })
+    
+    TODO: 
+        - add userpics support
+        - add like-btn
+
+mixin comment({ username= 'Unknown', userpic, text, date, likesNumber, mix=''} = {})
+    .comment(class=mix)
+        .comment__userpic
+            if !(userpic)
+                .comment__userpic-char= username[0]
+        .comment__user-info
+            .comment__username= username
+            .comment__date= date
+        .comment__like-btn like 12
+        p.comment__text= text
+            
