@@ -1,0 +1,89 @@
+extends ../../layouts/base-layout
+    
+include ../../components/header/header
+include ../../components/footer/footer
+include ../../components/benefit/benefit
+include ../../components/comment/comment
+include ../../components/booking-card/booking-card
+//- include ../../components/pie-chart/pie-chart
+
+block variables
+    - 
+        var 
+            title= "Просмотр номера | Toxin"
+
+block main
+    +header()
+    .room-details__photos
+        img(src=require('./img/img-1.png') class="room-details__photo")
+        img(src=require('./img/img-3.png') class="room-details__photo")
+        img(src=require('./img/img-2.png') class="room-details__photo")
+
+    .room-details-page__container
+        .room-details__info
+            article.room-details__benefits
+                h2 Сведения о номере
+                +benefit({ 
+                    title: 'Комфорт',
+                    info: 'Шумопоглощающие стены',
+                    iconName: 'insert_emoticon' 
+                })
+                +benefit({ 
+                    title: 'Удобство',
+                    info: 'Окно в каждой из спален',
+                    iconName: 'location_city'
+                })
+                +benefit({ 
+                    title: 'Уют',
+                    info: 'Номер оснащен камином',
+                    iconName: 'whatshot'
+                })
+
+            article.room-details__impressions
+                h2 Впечатления от номера
+                //- +pie-chart({
+                //-     dataset: [130, 65, 65, 0]
+                //- })
+            
+            article.room-details__comments
+                h2 Отзывы посетителей номера
+                +comment({
+                    username: 'Мурад Сарафанов',
+                    text: 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.',
+                    date: 'February 28, 2020 04:05:00',
+                    mix: 'room-details__comment'
+                })
+                +comment({
+                    username: 'Патрисия Стёклышкова',
+                    text: 'Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как комплимент',
+                    date: 'March 04, 2020 04:05:00',
+                    mix: 'room-details__comment'
+                })
+
+            
+            article.room-details__rules
+                h2 Правила
+                ul
+                    li Нельзя с питомцами
+                    li Без вечеринок и мероприятий
+                    li Время прибытия — после 13:00, а выезд до 12:00
+            
+            article.room-details__cancel-info
+                h2 Отмена
+                p Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги
+            
+        .room-details__booking-card
+            +booking-card({
+                formAttributes: { action: '#', method: 'post' },
+                roomNumber: 888,
+                daylyPrice: '9 990',
+                totalPrice: '38 081',
+                expenseItems: [
+                    { label: '9 990₽ х 4 суток', price: '39 960' },
+                    { label: 'Сбор за услуги: скидка 2 179₽', info: 'lorem ipsum', price: '0' },
+                    { label: 'Сбор за дополнительные услуги', info: 'lorem ipsum', price: '300' }
+                ]
+            })
+
+    +footer()
+

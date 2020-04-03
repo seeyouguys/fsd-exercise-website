@@ -1,0 +1,55 @@
+@import '../../theme/utils/variables.scss';
+@import '../../theme/utils/mixins.scss';
+
+.room-details-page__container {
+    width: 100%;
+    max-width: 1160px;
+    
+    margin: 0 auto;
+    padding: rem(70px) 0;
+
+    display: grid;
+    grid-template-columns: minmax(320px, 710px) auto;
+
+    gap: rem(70px);
+}
+
+.room-details {
+    &__info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        row-gap: rem(30px);
+    }
+
+    &__comments {
+        grid-column-start: 1;
+        grid-column-end: -1;
+    }
+
+    &__comment {
+        margin-bottom: rem(21px);
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__photos {
+        height: 33.682vw; // 33.682vw == 485px if 100vw == 1440px
+        // height: rem(485px)
+
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    &__photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    
+        &:first-of-type {
+            grid-row-start: 1;
+            grid-row-end: 3;
+        }
+    }
+}

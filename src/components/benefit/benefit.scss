@@ -31,4 +31,7 @@
         background-color: rgba($color-shade, .1);
         margin: rem(20px) 0;
     }
+    &:last-of-type::after {
+        display: none;
+    }
 }

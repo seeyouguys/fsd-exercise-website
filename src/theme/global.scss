@@ -16,7 +16,6 @@ body {
   font: normal rem(14px) $font-content;
   line-height: rem(24px);
   background-color: #fff;
-  background-color: rgb(189, 189, 189);;
 }
 
 h1 {
@@ -29,6 +28,7 @@ h2 {
   font: bold rem(19px) $font-title;
   line-height: rem(24px);
   color: $color-shade;
+  padding-bottom: rem(20px);
 }
 
 h3 {
@@ -50,6 +50,7 @@ ul {
 
   & li {
       margin-bottom: rem(10px);
+      display: flex;
 
       &:last-child {
           margin-bottom: 0;
@@ -57,12 +58,16 @@ ul {
 
       &::before {
           content: '';
-          display: inline-block;
+          display: block;
           width: rem(10px);
           height: rem(10px);
           margin-right: rem(11px);
+          margin-top: rem(6px);
+
           border-radius: 100%;
           background-color: rgba($color-shade, .25);
+          
+          flex-shrink: 0;
       }
   }
 }
