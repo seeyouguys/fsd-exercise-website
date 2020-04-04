@@ -1,0 +1,10 @@
+@import '../../theme/utils/variables.scss';
+@import '../../theme/utils/mixins.scss';
+
+.like-btn {
+    min-width: rem(40px);
+
+    &_active {
+        @include text-color($gradient-primary);
+    }
+}
