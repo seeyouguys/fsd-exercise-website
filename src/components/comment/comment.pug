@@ -7,6 +7,7 @@
                    powered with Moment.js, so it accepts plenty of different date types
                    see more: https://momentjs.com/docs/#/displaying/from/ 
     options.likesNumber - number of likes that comment got
+    options.isLiked - true if user already liked the comment
 
     example:
         +comment({
@@ -18,9 +19,10 @@
     
     TODO: 
         - add userpics support
-        - add like-btn
 
-mixin comment({ username= 'Unknown', userpic, text, date, likesNumber, mix=''} = {})
+include ../../components/like-btn/like-btn
+
+mixin comment({ username= 'Unknown', userpic, text, date, likesNumber, isLiked, mix=''} = {})
     .comment(class=mix)
         .comment__userpic
             if !(userpic)
@@ -28,6 +30,7 @@ mixin comment({ username= 'Unknown', userpic, text, date, likesNumber, mix=''} =
         .comment__user-info
             .comment__username= username
             .comment__date= date
-        .comment__like-btn like 12
+        .comment__like-btn
+            +like-btn({ likesNumber, isClicked: isLiked })
         p.comment__text= text
             

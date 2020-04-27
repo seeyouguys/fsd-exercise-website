@@ -1,17 +1,17 @@
 //- like button
 
     options.likesNumber - number of likes
-    options.isActive - is it highlighting or not
+    options.isClicked - is it highlighting or not
     options.mix - additional classes
     
     usage:
-        +like-btn(likesNumber: 12, isActive: true)
+        +like-btn(likesNumber: 12, isClicked: true)
 
-mixin like-btn({ likesNumber = 0, isActive = false, mix = '' })
-    - var iconName = isActive ? 'favorite' : 'favorite_border'
-    if isActive
-        - mix += ' like-btn_active'
+mixin like-btn({ likesNumber = 0, isClicked = false, mix = '' })
+    - var iconName = isClicked ? 'favorite' : 'favorite_border'
+    if isClicked
+        - mix += 'like-btn_active'
 
     button(class= 'btn btn_ghost like-btn ' + mix)
-        span.material-icons= iconName
-        span= likesNumber
+        span.like-btn__icon.material-icons= iconName
+        span.like-btn__likes-number= likesNumber
