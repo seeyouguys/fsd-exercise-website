@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "item-quantity-dropdown": "^2.0.2",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jquery-mask-plugin": "^1.14.15",
     "material-icons": "^0.3.1",
     "normalize.css": "^8.0.1"
