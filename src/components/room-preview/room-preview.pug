@@ -1,28 +1,42 @@
 //- card w/ slider and room info: number, price, rating
+    powered via bxslider
+
+    options.roomNumber     - room number
+    options.daylyPrice     - price per day
+    options.commentsNumber - number of comments
+    options.rating         - amount of stars you want to show
+    options.photos         - photos in carousel
+                             note that you can't pass pass an array of just image urls
+                             because require() argument can't be a variable
 
     example: 
         +room-preview({
             roomNumber: 888,
             daylyPrice: '9 990',
             rating: 5,
-            commentsNumber: 145
+            commentsNumber: 145,
+            photos: [
+                require('./img/img-1.png'),
+                require('./img/img-2.png'),
+                require('./img/img-3.png')
+            ]
         })
 
+
 //- TODO: 
-//-     slider img urls should be provided as an object/array among other parameters;
-//-     card isn't pixel-perefct due to the incorrect fonts
+//-     card isn't pixel-perefct due to the incorrect fonts and no shadows
 
 include ../rate-button/rate-button
 include ../room-info/room-info
 
-mixin room-preview({ roomNumber, daylyPrice, rating, commentsNumber })
+mixin room-preview({ roomNumber, daylyPrice, rating, commentsNumber, photos })
     .room-preview
-        .room-preview__image-slider.bxslider
-            .bx-item 1
-            .bx-item 2
-            .bx-item 3
-            .bx-item 4
-
+        .bxslider
+            each photo in photos
+                //- js will unhide it when the document is ready
+                //- without js it is a mess of pictures you don't want to show
+                img(src= photo class= 'bx-item bx-item_hidden')
+        
         .room-preview__brief
             +room-info({ roomNumber, daylyPrice, class: 'room-preview__info' })
             .room-preview__feedback

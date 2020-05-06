@@ -16,10 +16,17 @@
         line-height: 151px;
         color: $color-bg;
         text-decoration: none;
-        padding-left:10px;
+        padding-left: 10px;
         z-index: auto;
     }
 
+    .bx-controls-direction {
+        opacity: 0;
+        transition: .1s linear;
+    }
+    &:hover .bx-controls-direction {
+        opacity: 1;
+    }
     
     .bx-prev, .bx-next {
         border-radius: 4px 0 0 0;
@@ -37,7 +44,6 @@
         right: 0;
         transform: rotateY(180deg);
     }
-
 
     .bx-pager {
         position: absolute;
@@ -69,9 +75,16 @@
     border-radius: 4px 4px 0 0;
     height: 151px;
     width: 100%;
- 
-    // delete this (only for demo reasons)
-    background-color: $color-accent;
-    text-align: center;
-    line-height: 151px;
+
+    // don't show images while carousel script is loading
+    &_hidden {
+        display: none;
+    }
+}
+
+// this block is only visible when pics are hidden because script is loading
+.bxslider {
+    height: 151px;
+    border-radius: 4px 4px 0 0;
+    background-color: rgba($color-shade, .25);
 }

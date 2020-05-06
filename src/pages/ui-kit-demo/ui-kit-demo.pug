@@ -194,19 +194,16 @@ block main
             section.login
                 +login-card({ formAttributes: { action: '#', method: 'post' } })
 
-            section.room-preview
+            section.room-preview-card
                 +room-preview({
                     roomNumber: 888,
                     daylyPrice: '9 990',
                     rating: 5,
-                    commentsNumber: 145
-                })
-            
-            section.room-preview
-                +room-preview({
-                    roomNumber: 840,
-                    daylyPrice: '9 990',
-                    rating: 4,
-                    commentsNumber: 65
+                    commentsNumber: 145,
+                    photos: [
+                        require('./img/img-1.png'),
+                        require('./img/img-2.png'),
+                        require('./img/img-3.png')
+                    ]
                 })
             

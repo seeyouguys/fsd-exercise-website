@@ -1,5 +1,4 @@
 @import '../../theme/utils/variables.scss';
-@import 'bx-slider-config.scss';
 
 .room-preview {
     width: 270px;
@@ -22,9 +21,5 @@
     &__feedback {
         display: flex;
         justify-content: space-between;
-    }
-
-    &__image-slider {
-        background-color: $color-primary;
-    }
+    }   
 }
