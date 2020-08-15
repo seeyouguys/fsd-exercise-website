@@ -1,21 +1,13 @@
 extends ../../layouts/base-layout
     
-
-include ../../components/btn/btn
-include ../../components/like-btn/like-btn
-include ../../components/comment/comment
+include ../../components/pie-chart/pie-chart
 
 block variables
     - var title= "Toxin отель"
 
 block main
-    h1 like-btn
+    h1 pie-chart
 
-    +like-btn({ likesNumber: 2 })
-    +like-btn({ likesNumber: 12, isClicked: true })
-    +comment({
-        username: 'Мурад Сарафанов',
-        text: 'Великолепный матрас!',
-        date: 'February 28, 2020 04:05:00',
-        mix: 'room-details__comment'
-    })
+    +pie-chart([130, 65, 65, 0])
+    +pie-chart([11, 50])
+    +pie-chart([65, 13, 62, 12])

@@ -1,0 +1,53 @@
+//- pie-chart representing the room ratings ratio
+
+    takes array of [1 - 4] numbers
+    1st number - amount of people who rate it as "best" 
+    2nd - "good"
+    3rd - "acceptable"
+    4th - "bad"
+    
+    example:
+        +pie-chart([130, 65, 65, 0])
+        +pie-chart([11, 50])
+        
+    see more: 
+        https://htmlacademy.ru/blog/boost/frontend/svg-chart
+    
+
+mixin pie-chart(voteCounts)
+    .pie-chart
+
+        svg.chart(
+            width='120px'
+            height='120px'
+            viewBox='0 0 33 33'
+            data-total-count= voteCounts.reduce((a, b) => a + b))
+
+            defs
+                linearGradient(id="grad__best" x1="0%" y1="0%" x2="0%" y2="100%")
+                    stop.grad-start(offset="0%" stop-color="#FFE39C")
+                    stop.grad-end(offset="100%" stop-color="#FFBA9C")
+               
+                linearGradient(id="grad__good" x1="0%" y1="0%" x2="0%" y2="100%")
+                    stop.grad-start(offset="0%" stop-color="#6FCF97")
+                    stop.grad-end(offset="100%" stop-color="#66D2EA")
+                
+                linearGradient(id="grad__acceptable" x1="0%" y1="0%" x2="0%" y2="100%")
+                    stop.grad-start(offset="0%" stop-color="#BC9CFF")
+                    stop.grad-end(offset="100%" stop-color="#8BA4F9")
+                
+                linearGradient(id="grad__bad" x1="0%" y1="0%" x2="0%" y2="100%")
+                    stop.grad-start(offset="0%" stop-color="#919191")
+                    stop.grad-end(offset="100%" stop-color="#3D4975")
+
+            each voteCount in voteCounts
+                circle.chart__segment(r='15.9', cx='50%', cy='50%', data-count=voteCount)
+
+            text.chart__total-votes(x='50%', y='49%')
+            text.chart__votes-caption(x='50%', y='64%')
+    
+        ul.chart-labels
+            li.chart-labels__item Великолепно
+            li.chart-labels__item Хорошо
+            li.chart-labels__item Удовлетворительно
+            li.chart-labels__item Разочарован

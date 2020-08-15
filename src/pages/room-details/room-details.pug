@@ -5,7 +5,7 @@ include ../../components/footer/footer
 include ../../components/benefit/benefit
 include ../../components/comment/comment
 include ../../components/booking-card/booking-card
-//- include ../../components/pie-chart/pie-chart
+include ../../components/pie-chart/pie-chart
 
 block variables
     - 
@@ -41,9 +41,7 @@ block main
 
             article.room-details__impressions
                 h2 Впечатления от номера
-                //- +pie-chart({
-                //-     dataset: [130, 65, 65, 0]
-                //- })
+                +pie-chart([130, 65, 65, 0])
             
             article.room-details__comments
                 h2 Отзывы посетителей номера

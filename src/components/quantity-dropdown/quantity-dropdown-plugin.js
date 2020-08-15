@@ -1,7 +1,7 @@
 /* global jQuery */
 
 // for Russian plurals
-import getPluralNoun from './getPluralNoun';
+import getPluralNoun from '../../theme/utils/getPluralNoun';
 
 /* eslint-disable func-names */
 (function ($) {

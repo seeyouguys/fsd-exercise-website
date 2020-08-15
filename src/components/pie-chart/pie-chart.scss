@@ -1,0 +1,74 @@
+@import '../../theme/utils/variables.scss';
+@import '../../theme/utils/mixins.scss';
+
+.pie-chart {
+    display: flex;
+    align-items: flex-end;
+}
+
+.chart {
+    &__segment {
+        fill: none;
+        stroke-width: 1px;
+        stroke: $color-primary;
+
+        // do not show segments without votes
+        &[data-count='0'] {
+            display: none;
+        }
+        
+        &:nth-of-type(1) {
+            stroke: url(#grad__best) #FFE39C;
+        }
+        &:nth-of-type(2) {
+            stroke: url(#grad__good) $color-accent;
+        }
+        &:nth-of-type(3) {
+            stroke: url(#grad__acceptable) $color-primary;
+        }
+        &:nth-of-type(4) {
+            stroke: url(#grad__bad) #6b6b6b;
+        }
+    
+    }
+
+    &__total-votes {
+        font-family: 'Quicksand', sans-serif;
+        font-weight: bold;
+        font-size: 6.5px;
+        fill: $color-primary;
+        text-anchor: middle;
+    }
+
+    &__votes-caption {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
+        fill: $color-primary;
+        font-size: 3.25px;
+        text-anchor: middle;
+        text-transform: uppercase;
+    }
+}
+
+.chart-labels {
+    margin-left: rem(30px);
+}
+
+.chart-labels__item {
+    margin-bottom: 0;
+    &:nth-of-type(1)::before  {
+        background: linear-gradient(180deg, #FFE39C 0%, #FFBA9C 100%);
+    }
+    &:nth-of-type(2)::before  {
+        background: $gradient-secondary;
+    }
+    &:nth-of-type(3)::before  {
+        background: $gradient-primary;
+    }
+    &:nth-of-type(4)::before  {
+        background: linear-gradient(180deg, #919191 0%, #3D4975 100%);
+    }
+    &::before {
+        margin-right: .2875rem;
+    }
+}
