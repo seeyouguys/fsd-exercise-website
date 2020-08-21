@@ -5,8 +5,9 @@
     options.daylyPrice     - price per day
     options.commentsNumber - number of comments
     options.rating         - amount of stars you want to show
+    options.isLuxury       - show "luxury" caption
     options.photos         - photos in carousel
-                             note that you can't pass pass an array of just image urls
+                             note that you can't pass an array of just image urls
                              because require() argument can't be a variable
 
     example: 
@@ -14,6 +15,7 @@
             roomNumber: 888,
             daylyPrice: '9 990',
             rating: 5,
+            isLuxury: true,
             commentsNumber: 145,
             photos: [
                 require('./img/img-1.png'),
@@ -22,14 +24,10 @@
             ]
         })
 
-
-//- TODO: 
-//-     card isn't pixel-perefct due to the incorrect fonts and no shadows
-
 include ../rate-button/rate-button
 include ../room-info/room-info
 
-mixin room-preview({ roomNumber, daylyPrice, rating, commentsNumber, photos })
+mixin room-preview({ roomNumber, daylyPrice, rating, isLuxury, commentsNumber, photos })
     .room-preview
         .bxslider
             each photo in photos
@@ -38,7 +36,7 @@ mixin room-preview({ roomNumber, daylyPrice, rating, commentsNumber, photos })
                 img(src= photo class= 'bx-item bx-item_hidden')
         
         .room-preview__brief
-            +room-info({ roomNumber, daylyPrice, class: 'room-preview__info' })
+            +room-info({ roomNumber, daylyPrice, isLuxury, mix: 'room-preview__info' })
             .room-preview__feedback
                 +rate-button({ rating })
                 span.room-preview__comments-number= commentsNumber + ' Отзывов'

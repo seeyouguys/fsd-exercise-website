@@ -1,7 +1,25 @@
 //- component used in room-preview and booking-card
 
-mixin room-info(options)
+//-     options.roomNumber     - room number
+//-     options.daylyPrice     - price per day
+//-     options.isLuxury       - show "luxury" caption
 
-    .room-info(class= options.class || '')
-        span.room-number № #{ options.roomNumber }
-        span.room-price #{ options.daylyPrice }&#8381
+//-     example: 
+//-         +room-info({ 
+                roomNumber: 888,
+                daylyPrice: '9 990',
+                mix: 'room-preview__info'
+            })
+
+mixin room-info({ mix, roomNumber, daylyPrice, isLuxury })
+
+    .room-info(class= mix || '')
+        span
+            span.room-info__numero-sign №
+            span.room-info__number #{ roomNumber }
+            if isLuxury
+                span.room-info__luxury-caption Люкс
+        
+        span
+            span.room-info__price #{ daylyPrice }&#8381
+            span.room-info__price-caption в сутки
