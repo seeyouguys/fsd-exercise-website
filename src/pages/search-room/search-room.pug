@@ -1,0 +1,233 @@
+extends ../../layouts/base-layout
+    
+include ../../components/header/header
+include ../../components/footer/footer
+include ../../components/quantity-dropdown/quantity-dropdown
+include ../../components/booking-duration/booking-duration
+include ../../components/checkbox/checkbox
+include ../../components/expandable-list/expandable-list
+include ../../components/room-preview/room-preview
+
+block variables
+    - 
+        var 
+            title= "Выбор номера | Toxin"
+            rooms= [
+                {
+                    roomNumber: 888,
+                    daylyPrice: '9 990',
+                    rating: 5,
+                    isLuxury: true,
+                    commentsNumber: 145,
+                    photos: [
+                        require('./img/search-room__img-1.png'),
+                        require('./img/search-room__img-2.png'),
+                        require('./img/search-room__img-3.png'),
+                        require('./img/search-room__img-4.png')
+                    ]
+                }, {
+                    roomNumber: 840,
+                    daylyPrice: '9 990',
+                    rating: 4,
+                    commentsNumber: 65,
+                    photos: [
+                        require('./img/search-room__img-2.png'),
+                        require('./img/search-room__img-2.png'),
+                        require('./img/search-room__img-3.png'),
+                        require('./img/search-room__img-4.png')
+                    ]
+                },{
+                    roomNumber: 980,
+                    daylyPrice: '8 500',
+                    rating: 3,
+                    isLuxury: true,
+                    commentsNumber: 35,
+                    photos: [
+                        require('./img/search-room__img-3.png'),
+                        require('./img/search-room__img-2.png'),
+                        require('./img/search-room__img-3.png'),
+                        require('./img/search-room__img-4.png')
+                    ]
+                },{
+                    roomNumber: 856,
+                    daylyPrice: '7 300',
+                    rating: 5,
+                    commentsNumber: 19,
+                    photos: [
+                        require('./img/search-room__img-4.png'),
+                        require('./img/search-room__img-2.png'),
+                        require('./img/search-room__img-3.png'),
+                        require('./img/search-room__img-4.png')
+                    ]
+                },{
+                    roomNumber: 740,
+                    daylyPrice: '6 000',
+                    rating: 5,
+                    commentsNumber: 44,
+                    photos: [
+                        require('./img/search-room__img-5.png'),
+                        require('./img/search-room__img-2.png'),
+                        require('./img/search-room__img-3.png'),
+                        require('./img/search-room__img-4.png')
+                    ]
+                },{
+                    roomNumber: 982,
+                    daylyPrice: '5 800',
+                    rating: 4,
+                    commentsNumber: 56,
+                    photos: [
+                        require('./img/search-room__img-6.png'),
+                        require('./img/search-room__img-2.png'),
+                        require('./img/search-room__img-3.png'),
+                        require('./img/search-room__img-4.png')
+                    ]
+                },{
+                    roomNumber: 678,
+                    daylyPrice: '5 500',
+                    rating: 3,
+                    commentsNumber: 45,
+                    photos: [
+                        require('./img/search-room__img-7.png'),
+                        require('./img/search-room__img-2.png'),
+                        require('./img/search-room__img-3.png'),
+                        require('./img/search-room__img-4.png')
+                    ]
+                },{
+                    roomNumber: 450,
+                    daylyPrice: '5 300',
+                    rating: 4,
+                    commentsNumber: 39,
+                    photos: [
+                        require('./img/search-room__img-8.png'),
+                        require('./img/search-room__img-2.png'),
+                        require('./img/search-room__img-3.png'),
+                        require('./img/search-room__img-4.png')
+                    ]
+                },{
+                    roomNumber: 350,
+                    daylyPrice: '5 000',
+                    rating: 3,
+                    commentsNumber: 77,
+                    photos: [
+                        require('./img/search-room__img-9.png'),
+                        require('./img/search-room__img-2.png'),
+                        require('./img/search-room__img-3.png'),
+                        require('./img/search-room__img-4.png')
+                    ]
+                },{
+                    roomNumber: 666,
+                    daylyPrice: '5 000',
+                    rating: 5,
+                    commentsNumber: 25,
+                    photos: [
+                        require('./img/search-room__img-10.png'),
+                        require('./img/search-room__img-2.png'),
+                        require('./img/search-room__img-3.png'),
+                        require('./img/search-room__img-4.png')
+                    ]
+                }, {
+                    roomNumber: 444,
+                    daylyPrice: '5 000',
+                    rating: 3,
+                    commentsNumber: 15,
+                    photos: [
+                        require('./img/search-room__img-11.png'),
+                        require('./img/search-room__img-2.png'),
+                        require('./img/search-room__img-3.png'),
+                        require('./img/search-room__img-4.png')
+                    ]
+                },{
+                    roomNumber: 352,
+                    daylyPrice: '5 000',
+                    rating: 3,
+                    commentsNumber: 55,
+                    photos: [
+                        require('./img/search-room__img-12.png'),
+                        require('./img/search-room__img-2.png'),
+                        require('./img/search-room__img-3.png'),
+                        require('./img/search-room__img-4.png')
+                    ]
+                }
+            ]
+
+block main
+    +header()
+    
+    .search-room__content
+        .filters
+            section.filters__trip-info
+                section.filters__duration-dropdown
+                    +quantity-dropdown({
+                        label: 'Гости',
+                        attributes: {
+                            id: 'guests-quantity',
+                        },
+                        items: [
+                            { title: 'взрослые', dataID:'adults', defaultCount: 2 },
+                            { title: 'дети',     dataID:'children', minCount: 1 },
+                            { title: 'младенцы', dataID:'infant', maxCount: 1}
+                        ]
+                    })
+
+                section.filters__guests-dropdown
+                    +quantity-dropdown({
+                        label: 'Гости',
+                        attributes: {
+                            id: 'guests-quantity',
+                        },
+                        items: [
+                            { title: 'взрослые', dataID:'adults', defaultCount: 2 },
+                            { title: 'дети',     dataID:'children', minCount: 1 },
+                            { title: 'младенцы', dataID:'infant', maxCount: 1}
+                        ]
+                    })
+
+            section.filters__range-slider
+                h3.section-header range slider placeholder
+
+            section.filters__checkboxes
+                h3.filters__section-header Checkbox buttons
+                +checkbox({ label: 'Можно курить'  })
+                +checkbox({ label: 'Можно с питомцами', attributes: { checked: true } })
+                +checkbox({ label: 'Можно пригласить гостей (до 10 человек)', attributes: { checked: true } })
+
+            section.filters__checkboxes
+                h3.filters__section-header Доступность
+                +checkbox({ label: 'Широкий коридор', attributes: { name: 'wideCorridor' } })
+                    | Ширина коридоров в номере не менее 91 см.
+                +checkbox({ label: 'Помощник для инвалидов', attributes: { name: 'disabledAssistance' } })
+                    | На 1 этаже вас встретит специалист  и проводит до номера.
+            
+            section.filters__dropdown
+                +quantity-dropdown({
+                    label: 'Гости',
+                    attributes: {
+                        id: 'guests-quantity',
+                    },
+                    items: [
+                        { title: 'взрослые', dataID:'adults', defaultCount: 2 },
+                        { title: 'дети',     dataID:'children', minCount: 1 },
+                        { title: 'младенцы', dataID:'infant', maxCount: 1}
+                    ]
+                })
+
+            section.filters__filters-item
+                +expandable-list({ label: 'Дополнительные удобства', isHidden: true, attributes: {id: 'meals'} })
+                    +checkbox({ label: 'Завтрак', attributes: { name: 'breakfast' } })
+                    +checkbox({ label: 'Стул для кормления', attributes: { name: 'chair', checked: true } })
+                    +checkbox({ label: 'Кроватка', attributes: { name: 'crib', checked: true } })
+                    +checkbox({ label: 'Телевизор', attributes: { name: 'television', checked: true } })
+                    +checkbox({ label: 'Шампунь', attributes: { name: 'shampoo' } })
+                    +checkbox({ label: 'Телевизор', attributes: { name: 'television' } })
+                    +checkbox({ label: 'Шампунь', attributes: { name: 'shampoo' } })
+
+        .search-room__rooms
+            h1.search-room__section-header Номера, которые мы для вас подобрали
+
+            each room in rooms
+                +room-preview(room)
+            
+            .search-room__paginator paginator
+
+    +footer()
+

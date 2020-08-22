@@ -1,0 +1,50 @@
+@import '../../theme/utils/variables.scss';
+@import '../../theme/utils/mixins.scss';
+
+.search-room {
+
+    &__content {
+        width: 100%;
+        max-width: 1160px;
+        
+        margin: 0 auto;
+        padding: rem(30px) 0 rem(70px);
+    
+        display: grid;
+        grid-template-columns: minmax(266px, 320px) auto;
+    
+        gap: rem(60px);
+    }
+
+    &__section-header {
+        grid-column: 1/-1;
+    }
+    &__rooms {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: rem(20px) rem(12px);
+    }
+
+    &__paginator {
+        background-color: rgba(206, 123, 28, 0.2);
+    }
+}
+
+.filters {
+    display: grid;
+    row-gap: rem(30px);
+    grid-auto-rows: max-content;
+
+    &__checkboxes {
+        display: grid;
+        row-gap: 10px;
+    }
+
+    &__section-header {
+        margin-bottom: rem(6px);
+    }
+
+    &__duration-dropdown {
+        margin-bottom: rem(20px);
+    }
+}
